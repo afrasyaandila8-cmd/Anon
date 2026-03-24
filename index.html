@@ -22,6 +22,8 @@
         .msg-card { background: #fffafb; padding: 15px; margin: 10px 0; border-radius: 15px; border-left: 5px solid #ffb6c1; text-align: left; font-size: 13px; word-wrap: break-word; }
         .footer-name { font-size: 9px; margin: 30px 0; color: #ccc; letter-spacing: 2px; text-transform: uppercase; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        /* Styling Kotak Iklan agar menyatu */
+        .ad-slot { margin: 25px 0; padding: 15px; border: 2px dashed #ffb6c1; border-radius: 25px; background: #fffafb; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 250px; overflow: hidden; }
     </style>
 </head>
 <body>
@@ -63,6 +65,12 @@
                 <button class="main-btn" onclick="window.copyAndShare()">Salin & Buka IG Story 📸</button>
                 <button class="main-btn wa-btn" onclick="window.shareWA()">Share ke WhatsApp 🟢</button>
             </div>
+            
+            <div class="ad-slot">
+                <span style="font-size: 8px; color: #ccc; margin-bottom: 10px; letter-spacing: 2px; text-transform: uppercase;">Promoted Content</span>
+                <script src="https://pl28971006.profitablecpmratenetwork.com/b5/06/21/b5062164c8e2ce615f79e8b920276e0b.js"></script>
+            </div>
+
             <h3 style="font-size:14px; text-align:left; color: var(--pink-bold);">Pesan Masuk:</h3>
             <div id="list-pesan"></div>
         </section>
@@ -77,18 +85,15 @@
     </div>
 
     <section id="page-send-msg" class="content-page" style="display:none;">
-    <h2>Kirim Pesan Anonim</h2>
-    <textarea id="anon-text" rows="4" placeholder="Tulis rahasiamu..."></textarea>
-    <button class="main-btn" onclick="window.sendToFirebase()">Kirim Rahasia 🤫</button>
+        <h2>Kirim Pesan Anonim</h2>
+        <textarea id="anon-text" rows="4" placeholder="Tulis rahasiamu..."></textarea>
+        <button class="main-btn" onclick="window.sendToFirebase()">Kirim Rahasia 🤫</button>
 
-    <div style="margin: 25px 0; padding: 15px; border: 2px dashed #ffb6c1; border-radius: 25px; background: #fffafb; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 250px;">
-        
-        <span style="font-size: 8px; color: #ccc; margin-bottom: 10px; letter-spacing: 2px; text-transform: uppercase;">Promoted Content</span>
-
-        <script src="https://pl28971006.profitablecpmratenetwork.com/b5/06/21/b5062164c8e2ce615f79e8b920276e0b.js"></script>
-        
-    </div>
-</section>
+        <div class="ad-slot">
+            <span style="font-size: 8px; color: #ccc; margin-bottom: 10px; letter-spacing: 2px; text-transform: uppercase;">Promoted Content</span>
+            <script src="https://pl28971006.profitablecpmratenetwork.com/b5/06/21/b5062164c8e2ce615f79e8b920276e0b.js"></script>
+        </div>
+    </section>
 
     <div class="footer-name">by: merpati</div>
 </div>
@@ -144,23 +149,17 @@
         });
     }
 
-    // --- FUNGSI GABUNGAN BARU ---
     window.copyAndShare = () => {
         const link = document.getElementById('link-display').innerText;
-        
-        // 1. Salin Link
         navigator.clipboard.writeText(link).then(() => {
-            // 2. Notifikasi cantik
             const alertBox = document.createElement('div');
             alertBox.style = "position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:#ff85a2; color:white; padding:20px; border-radius:20px; z-index:9999; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.2); width:80%";
             alertBox.innerHTML = "<b>Link Tersalin! ✨</b><br><br>1. Kamera IG akan terbuka<br>2. Pilih ikon <b>Stiker</b><br>3. Pilih <b>LINK</b> & Paste!<br><br><small>Menuju Instagram...</small>";
             document.body.appendChild(alertBox);
 
-            // 3. Tunggu sebentar lalu buka IG
             setTimeout(() => {
                 alertBox.remove();
                 window.location.href = "instagram://story-camera";
-                
                 setTimeout(() => {
                     if (!document.hidden) {
                         window.open("https://www.instagram.com/", "_blank");
@@ -176,20 +175,10 @@
         const bmi = bb / ((tb/100)**2);
         document.getElementById('hasilBMI').style.display = "block";
         let s = "", u = "";
-        
-        if(bmi < 18.5) { 
-            s = "Kurus 🥬"; 
-            u = gen==='pria' ? "https://cdn-icons-png.flaticon.com/512/11626/11626078.png" : "https://cdn-icons-png.flaticon.com/512/11626/11626079.png"; 
-        } else if(bmi < 25) { 
-            s = "Ideal ✨"; 
-            u = gen==='pria' ? "https://cdn-icons-png.flaticon.com/512/11626/11626073.png" : "https://cdn-icons-png.flaticon.com/512/11626/11626074.png"; 
-        } else if(bmi < 30) { 
-            s = "Gemuk 🍔"; 
-            u = gen==='pria' ? "https://cdn-icons-png.flaticon.com/512/11626/11626081.png" : "https://cdn-icons-png.flaticon.com/512/11626/11626082.png"; 
-        } else {
-            s = "Obesitas 🍕"; 
-            u = gen==='pria' ? "https://cdn-icons-png.flaticon.com/512/9334/9334533.png" : "https://cdn-icons-png.flaticon.com/512/9334/9334537.png"; 
-        }
+        if(bmi < 18.5) { s = "Kurus 🥬"; u = gen==='pria' ? "https://cdn-icons-png.flaticon.com/512/11626/11626078.png" : "https://cdn-icons-png.flaticon.com/512/11626/11626079.png"; }
+        else if(bmi < 25) { s = "Ideal ✨"; u = gen==='pria' ? "https://cdn-icons-png.flaticon.com/512/11626/11626073.png" : "https://cdn-icons-png.flaticon.com/512/11626/11626074.png"; }
+        else if(bmi < 30) { s = "Gemuk 🍔"; u = gen==='pria' ? "https://cdn-icons-png.flaticon.com/512/11626/11626081.png" : "https://cdn-icons-png.flaticon.com/512/11626/11626082.png"; }
+        else { s = "Obesitas 🍕"; u = gen==='pria' ? "https://cdn-icons-png.flaticon.com/512/9334/9334533.png" : "https://cdn-icons-png.flaticon.com/512/9334/9334537.png"; }
         document.getElementById('status-teks').innerText = s;
         document.getElementById('img-visual').src = u;
     };
@@ -203,11 +192,7 @@
         const t = document.getElementById('anon-text').value;
         if(!t) return;
         try {
-            await addDoc(collection(db, "messages"), { 
-                receiverID: receiverID, 
-                text: t, 
-                timestamp: serverTimestamp() 
-            });
+            await addDoc(collection(db, "messages"), { receiverID: receiverID, text: t, timestamp: serverTimestamp() });
             alert("Terkirim!");
             location.href = window.location.origin + window.location.pathname;
         } catch(e) { alert("Gagal mengirim pesan."); }
@@ -217,6 +202,8 @@
         document.getElementById('hasilJodoh').innerText = Math.floor(Math.random() * 40 + 60) + "% ❤️";
     };
 </script>
+
+<script src="https://pl28970450.profitablecpmratenetwork.com/34/83/cc/3483cc01879a0b87f5698fca3d8b6067.js"></script>
 
 </body>
 </html>
