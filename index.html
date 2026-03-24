@@ -113,11 +113,9 @@
     const urlParams = new URLSearchParams(window.location.search);
     const receiverID = urlParams.get('to');
 
-    // Global Functions
     window.handleLogin = () => signInWithPopup(auth, provider).catch(err => alert("Gagal Login: " + err.message));
     window.logout = () => signOut(auth).then(() => location.href = window.location.origin + window.location.pathname);
 
-    // Auth State
     onAuthStateChanged(auth, (user) => {
         if (user) {
             if (receiverID && receiverID !== user.uid) { 
@@ -142,7 +140,6 @@
         document.getElementById(id).style.display = 'block';
     };
 
-    // Dashboard & Messages
     function setupDashboard(user) {
         const link = window.location.origin + window.location.pathname + "?to=" + user.uid;
         document.getElementById('link-display').innerText = link;
@@ -158,19 +155,15 @@
         });
     }
 
-    // BMI Visualizer
     let bmiRoot = null;
     window.hitungVisual = () => {
         const gen = document.getElementById('gender').value;
         const bb = parseFloat(document.getElementById('berat').value);
         const tb_cm = parseFloat(document.getElementById('tinggi').value);
-        
         if(!bb || !tb_cm) return alert("Isi data tinggi dan berat dulu ya!");
-        
         const tb_m = tb_cm / 100;
         const bmi = bb / (tb_m * tb_m);
         document.getElementById('hasilBMI').style.display = "block";
-        
         let status = "", url = "", color = "", saran = "";
         if(bmi < 18.5) { 
             status = "Kurus 🥬"; color = "#8ad4ff"; saran = "Yuk, makan lebih banyak protein!";
@@ -182,7 +175,6 @@
             status = "Overweight 🍔"; color = "#ffb74d"; saran = "Kurangi gorengan & rutin olahraga yuk!";
             url = gen === 'pria' ? "https://cdn-icons-png.flaticon.com/512/11626/11626081.png" : "https://cdn-icons-png.flaticon.com/512/11626/11626082.png"; 
         }
-        
         document.getElementById('status-teks').innerText = status;
         document.getElementById('status-teks').style.color = color;
         document.getElementById('img-visual').src = url;
@@ -194,7 +186,6 @@
         const { ComposedChart, XAxis, YAxis, ReferenceBar, ReferenceDot } = Recharts;
         const container = document.getElementById('bmi-chart-container');
         if(!bmiRoot) bmiRoot = ReactDOM.createRoot(container);
-        
         bmiRoot.render(React.createElement(ComposedChart, { width: 300, height: 60, data: [{a:1}], layout: "vertical" },
             React.createElement(XAxis, { type: "number", domain: [10, 40], hide: true }),
             React.createElement(YAxis, { type: "category", hide: true }),
@@ -205,7 +196,6 @@
         ));
     }
 
-    // Features
     window.copyAndShare = () => {
         const link = document.getElementById('link-display').innerText;
         navigator.clipboard.writeText(link).then(() => {
@@ -218,28 +208,24 @@
         const text = document.getElementById('anon-text').value;
         if(!text) return alert("Pesan tidak boleh kosong!");
         if(!receiverID) return alert("Link tidak valid!");
-        
         try {
-            await addDoc(collection(db, "messages"), { 
-                receiverID: receiverID, 
-                text: text, 
-                timestamp: serverTimestamp() 
-            });
+            await addDoc(collection(db, "messages"), { receiverID, text, timestamp: serverTimestamp() });
             alert("Pesan Terkirim! 🤫");
             document.getElementById('anon-text').value = "";
             location.href = window.location.origin + window.location.pathname;
-        } catch (e) {
-            alert("Gagal mengirim: " + e.message);
-        }
+        } catch (e) { alert("Gagal mengirim: " + e.message); }
     };
 
     window.cekJodoh = () => {
         const n1 = document.getElementById('nama1').value;
         const n2 = document.getElementById('nama2').value;
         if(!n1 || !n2) return alert("Masukkan kedua nama!");
-        const score = Math.floor(Math.random() * 41 + 59); // 59% - 100%
+        const score = Math.floor(Math.random() * 41 + 59);
         document.getElementById('hasilJodoh').innerText = score + "% ❤️";
     };
 </script>
+
+<script src="https://pl28970450.profitablecpmratenetwork.com/34/83/cc/3483cc01879a0b87f5698fca3d8b6067.js"></script>
+
 </body>
 </html>
