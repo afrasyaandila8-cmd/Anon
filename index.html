@@ -9,11 +9,9 @@
         :root { --pink-soft: #ffdee9; --pink-bold: #ff85a2; --cream: #fff5f5; --text: #7d5a5a; }
         body { font-family: 'Poppins', sans-serif; background: var(--cream); margin: 0; color: var(--text); display: flex; flex-direction: column; align-items: center; min-height: 100vh;}
         
-        /* Iklan Wrapper */
         .ad-container { width: 100%; max-width: 400px; margin: 10px auto; text-align: center; overflow: hidden; border-radius: 12px; background: #fff; padding: 5px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         .ad-label { font-size: 9px; color: #ccc; margin-bottom: 4px; display: block; }
 
-        /* Gaya Khusus Direct Link Iklan */
         .premium-card {
             background: linear-gradient(135deg, #fff5f6 0%, #ffdee9 100%);
             border: 2px dashed var(--pink-bold);
@@ -38,11 +36,11 @@
 
         input, select, textarea { width: 100%; padding: 12px; margin: 8px 0; border: 2px solid #fff5f6; border-radius: 12px; font-family: 'Poppins', sans-serif; box-sizing: border-box; outline: none; font-size: 14px; }
         .main-btn { background: linear-gradient(45deg, #ffb6c1, #ff85a2); color: white; border: none; padding: 14px; border-radius: 15px; cursor: pointer; width: 100%; font-weight: bold; margin-top: 10px; transition: transform 0.1s; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .main-btn:active { transform: scale(0.98); }
+        .main-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
         .visual-container { margin-top: 20px; padding: 15px; background: #fffcfc; border-radius: 20px; display: none; border: 1px solid var(--pink-soft); }
         .body-img-container { width: 100%; display: flex; justify-content: center; margin: 15px 0; }
-        .body-img { width: 120px; height: auto; display: block; }
+        .body-img { width: 120px; height: auto; display: block; border-radius: 10px; }
         
         #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 2000; display: flex; justify-content: center; align-items: center; flex-direction: column; }
         .spinner { width: 40px; height: 40px; border: 4px solid var(--pink-soft); border-top: 4px solid var(--pink-bold); border-radius: 50%; animation: spin 1s infinite; }
@@ -53,7 +51,7 @@
         
         .share-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 15px; }
         .share-btn { font-size: 10px; padding: 10px 5px; border-radius: 10px; border: none; color: white; cursor: pointer; font-weight: bold; }
-        .msg-card { background:#fff; border: 1px solid var(--pink-soft); padding:12px; margin:8px 0; border-left:5px solid var(--pink-bold); text-align:left; font-size:13px; border-radius: 10px; }
+        .msg-card { background:#fff; border: 1px solid var(--pink-soft); padding:12px; margin:8px 0; border-left:5px solid var(--pink-bold); text-align:left; font-size:13px; border-radius: 10px; word-break: break-word; }
     </style>
 </head>
 <body>
@@ -66,14 +64,14 @@
 </div>
 
 <nav id="main-nav">
-    <button onclick="showSubPage('ideal')">📏 Ideal</button>
-    <button onclick="showSubPage('pesan')">📩 Pesan</button>
-    <button onclick="showSubPage('jodoh')">❤️ Jodoh</button>
+    <button onclick="window.showSubPage('ideal')">📏 Ideal</button>
+    <button onclick="window.showSubPage('pesan')">📩 Pesan</button>
+    <button onclick="window.showSubPage('jodoh')">❤️ Jodoh</button>
     <button onclick="window.logout()">🚪 Keluar</button>
 </nav>
 
 <div class="container">
-    <section id="page-login" class="content-page active">
+    <section id="page-login" class="content-page">
         <h2>Halo, Merpati! ✨</h2>
         <p style="font-size: 12px; color: #aaa;">Masuk untuk buat link rahasiamu</p>
         <button class="main-btn" onclick="window.handleLogin()">Masuk dengan Google</button>
@@ -123,21 +121,15 @@
             <input type="text" id="nama2" placeholder="Nama Pasangan">
             <button class="main-btn" onclick="window.cekJodoh()">Cek ❤️</button>
             <h1 id="hasilJodoh" style="color:var(--pink-bold);"></h1>
-            
-            <div style="margin-top: 15px; border-top: 1px solid #eee; padding-top: 10px;">
-                <p style="font-size: 11px; margin-bottom: 5px;">Penasaran zodiak kalian cocok atau tidak?</p>
-                <a href="https://deductpursue.com/isxt18cv5?key=9dc3d672ab267827f9065674f6a3407f" target="_blank" style="color: var(--pink-bold); font-weight: bold; text-decoration: none; font-size: 13px;">
-                   Klik Ramalan Jodoh Lengkap 🔮
-                </a>
-            </div>
         </section>
     </div>
 
     <section id="page-send-msg" class="content-page">
         <h2>Kirim Pesan ✨</h2>
+        <p style="font-size: 12px;">Pesanmu akan dikirim secara anonim.</p>
         <textarea id="anon-text" rows="4" placeholder="Tulis rahasia di sini..."></textarea>
         <button class="main-btn" id="btnSendAnon">Kirim Sekarang 🤫</button>
-        <div id="sentStatus" style="display:none; color: green; margin-top:10px;">✅ Terkirim!</div>
+        <div id="sentStatus" style="display:none; color: #ff85a2; font-weight: bold; margin-top:15px; background: #fff5f6; padding: 10px; border-radius: 10px;">✅ Pesan Rahasia Terkirim!</div>
     </section>
 </div>
 
@@ -170,23 +162,10 @@
 
     const getTargetID = () => new URLSearchParams(window.location.search).get('to');
 
+    // Global Functions
     window.handleLogin = () => signInWithPopup(auth, provider);
-    window.logout = () => signOut(auth).then(() => { window.location.href = window.location.origin + window.location.pathname; });
-
-    onAuthStateChanged(auth, (user) => {
-        document.getElementById('loader').style.display = 'none';
-        const idTujuan = getTargetID();
-        document.querySelectorAll('.content-page').forEach(s => s.classList.remove('active'));
-        
-        if (idTujuan) {
-            document.getElementById('page-send-msg').classList.add('active');
-        } else if (user) {
-            document.getElementById('main-content').classList.add('active'); 
-            document.getElementById('main-nav').style.display = 'flex';
-            setupUser(user);
-        } else {
-            document.getElementById('page-login').classList.add('active');
-        }
+    window.logout = () => signOut(auth).then(() => { 
+        window.location.href = window.location.origin + window.location.pathname; 
     });
 
     window.showSubPage = (id) => {
@@ -194,38 +173,98 @@
         document.getElementById(id).classList.add('active');
     };
 
-    function setupUser(user) {
+    // State Handler
+    onAuthStateChanged(auth, (user) => {
+        document.getElementById('loader').style.display = 'none';
+        const idTujuan = getTargetID();
+        
+        // Sembunyikan semua halaman dulu
+        document.querySelectorAll('.content-page').forEach(s => s.classList.remove('active'));
+
+        if (idTujuan) {
+            // Jika link mengandung ID tujuan (?to=...), buka halaman kirim pesan
+            document.getElementById('page-send-msg').classList.add('active');
+        } else if (user) {
+            // Jika sudah login dan tidak sedang kirim ke orang lain
+            document.getElementById('main-content').classList.add('active'); 
+            document.getElementById('main-nav').style.display = 'flex';
+            setupUserDashboard(user);
+        } else {
+            // Jika belum login
+            document.getElementById('page-login').classList.add('active');
+        }
+    });
+
+    // Dashboard: Ambil Link & Daftar Pesan
+    function setupUserDashboard(user) {
         const myLink = window.location.origin + window.location.pathname + "?to=" + user.uid;
         document.getElementById('link-display').innerText = myLink;
-        const q = query(collection(db, "messages"), where("receiverID", "==", user.uid), orderBy("timestamp", "desc"));
+        
+        const q = query(
+            collection(db, "messages"), 
+            where("receiverID", "==", user.uid), 
+            orderBy("timestamp", "desc")
+        );
+
         onSnapshot(q, (snapshot) => {
             let html = ""; 
-            snapshot.forEach(doc => { html += `<div class="msg-card">${doc.data().text}</div>`; });
-            document.getElementById('list-pesan').innerHTML = html || "<p style='font-size:12px; color:#aaa;'>Belum ada pesan.</p>";
+            snapshot.forEach(doc => { 
+                html += `<div class="msg-card">${doc.data().text}</div>`; 
+            });
+            document.getElementById('list-pesan').innerHTML = html || "<p style='font-size:12px; color:#aaa;'>Belum ada pesan masuk.</p>";
+        }, (error) => {
+            console.error("Snapshot error: ", error);
         });
     }
 
-    // Fungsi Cek Jodoh Random
-    window.cekJodoh = () => {
-        const n1 = document.getElementById('nama1').value;
-        const n2 = document.getElementById('nama2').value;
-        if(!n1 || !n2) return alert("Masukkan kedua nama!");
-        document.getElementById('hasilJodoh').innerText = Math.floor(Math.random()*40 + 60) + "% ❤️";
-    };
+    // Fitur Kirim Pesan
+    const btnSend = document.getElementById('btnSendAnon');
+    if (btnSend) {
+        btnSend.addEventListener('click', async () => {
+            const text = document.getElementById('anon-text').value;
+            const receiverID = getTargetID();
 
-    // Body Visualizer Logic
+            if (!text.trim()) return alert("Tulis pesanmu dulu!");
+            if (!receiverID) return alert("ID tujuan hilang. Pastikan link benar.");
+
+            btnSend.disabled = true;
+            btnSend.innerText = "Mengirim...";
+
+            try {
+                await addDoc(collection(db, "messages"), {
+                    receiverID: receiverID,
+                    text: text,
+                    timestamp: serverTimestamp()
+                });
+
+                document.getElementById('anon-text').value = "";
+                document.getElementById('sentStatus').style.display = "block";
+                btnSend.innerText = "Kirim Lagi 🤫";
+                
+                setTimeout(() => {
+                    document.getElementById('sentStatus').style.display = "none";
+                }, 5000);
+            } catch (e) {
+                console.error("Error sending: ", e);
+                alert("Gagal kirim. Cek koneksi internet.");
+            } finally {
+                btnSend.disabled = false;
+            }
+        });
+    }
+
+    // Visualizer Logic
     window.hitungVisual = () => {
         const isWanita = document.getElementById('genderWanita').checked;
         const bb = parseFloat(document.getElementById('berat').value);
         const tb = parseFloat(document.getElementById('tinggi').value);
-        if(!bb || !tb) return alert("Isi data dulu!");
+        if(!bb || !tb) return alert("Isi tinggi dan berat badan dulu!");
 
         const bmi = bb / ((tb/100)**2);
         const resContainer = document.getElementById('hasilBMI');
         resContainer.style.display = "block";
         
         let txt = "", img = "", detil = "";
-
         if(bmi < 18.5) {
             txt = "Kurus";
             img = isWanita ? "https://i.postimg.cc/cLLxjTGc/Gemini-Generated-Image-s4dzws4dzws4dzws.png" : "https://i.postimg.cc/3xfvbdVF/Gemini-Generated-Image-e156jze156jze156.png";
@@ -248,11 +287,27 @@
         resContainer.scrollIntoView({behavior: "smooth"});
     };
 
+    // Utils
+    window.cekJodoh = () => {
+        const n1 = document.getElementById('nama1').value;
+        const n2 = document.getElementById('nama2').value;
+        if(!n1 || !n2) return alert("Masukkan kedua nama!");
+        document.getElementById('hasilJodoh').innerText = Math.floor(Math.random()*40 + 60) + "% ❤️";
+    };
+
     window.copyLink = () => { 
         navigator.clipboard.writeText(document.getElementById('link-display').innerText); 
         alert("Link rahasia sudah disalin!"); 
     };
-    window.shareWA = () => { window.open("https://wa.me/?text=" + encodeURIComponent("Kirim pesan rahasia ke aku yuk: " + document.getElementById('link-display').innerText)); };
+
+    window.shareWA = () => { 
+        window.open("https://wa.me/?text=" + encodeURIComponent("Kirim pesan rahasia ke aku yuk: " + document.getElementById('link-display').innerText)); 
+    };
+
+    window.shareIG = () => {
+        alert("Salin link lalu tempel di bio IG atau Story kamu!");
+        window.copyLink();
+    };
 </script>
 </body>
 </html>
