@@ -10,7 +10,7 @@
         body { font-family: 'Poppins', sans-serif; background: var(--cream); margin: 0; color: var(--text); display: flex; flex-direction: column; align-items: center; min-height: 100vh;}
         
         /* Container Iklan */
-        .ad-box { width: 100%; max-width: 400px; min-height: 100px; margin: 10px auto; display: flex; justify-content: center; align-items: center; background: #fff; border-radius: 15px; overflow: hidden; border: 1px dashed var(--pink-soft); }
+        .ad-box { width: 100%; max-width: 400px; min-height: 50px; margin: 10px auto; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #fff0f3; border-radius: 15px; overflow: hidden; border: 1px dashed var(--pink-bold); font-size: 10px; color: var(--pink-bold); padding: 5px; box-sizing: border-box; }
 
         nav { background: rgba(255,255,255,0.9); backdrop-filter: blur(5px); width: 100%; display: none; justify-content: space-around; padding: 12px 0; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--pink-soft); }
         nav button { background: none; border: none; font-weight: 600; font-size: 11px; cursor: pointer; color: var(--text); }
@@ -18,23 +18,20 @@
         .container { background: white; width: 92%; max-width: 400px; margin: 15px auto; padding: 25px; border-radius: 30px; box-shadow: 0 10px 25px rgba(255,182,193,0.2); text-align: center; box-sizing: border-box; flex-grow: 1;}
         h2 { font-family: 'Dancing Script', cursive; color: var(--pink-bold); font-size: 30px; margin-bottom: 20px; }
 
-        input, select, textarea { width: 100%; padding: 12px; margin: 8px 0; border: 2px solid #fff5f6; border-radius: 12px; font-family: 'Poppins', sans-serif; box-sizing: border-box; }
+        input, select, textarea { width: 100%; padding: 12px; margin: 8px 0; border: 2px solid #fff5f6; border-radius: 12px; font-family: 'Poppins', sans-serif; box-sizing: border-box; outline: none; }
         .main-btn { background: linear-gradient(45deg, #ffb6c1, #ff85a2); color: white; border: none; padding: 14px; border-radius: 15px; cursor: pointer; width: 100%; font-weight: bold; margin-top: 10px; transition: transform 0.1s; }
         .main-btn:active { transform: scale(0.98); }
 
-        /* Visualisasi Badan Full Body */
-        .visual-container { margin-top: 20px; padding: 15px; background: #fffcfc; border-radius: 20px; display: none; }
+        .visual-container { margin-top: 20px; padding: 15px; background: #fffcfc; border-radius: 20px; display: none; border: 1px solid var(--pink-soft); }
         .body-img-container { width: 100%; display: flex; justify-content: center; margin: 15px 0; }
-        .body-img { width: auto; height: 250px; display: block; filter: drop-shadow(0 5px 8px rgba(0,0,0,0.1)); object-fit: contain;}
+        .body-img { width: 120px; height: auto; display: block; filter: drop-shadow(0 5px 8px rgba(255,133,162,0.3)); }
         
         #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 2000; display: flex; justify-content: center; align-items: center; flex-direction: column; }
         .spinner { width: 40px; height: 40px; border: 4px solid var(--pink-soft); border-top: 4px solid var(--pink-bold); border-radius: 50%; animation: spin 1s infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        /* Gaya Konten */
         .content-page, .sub-page { display: none; opacity: 0; transition: opacity 0.4s ease-in-out; }
         .content-page.active, .sub-page.active { display: block; opacity: 1; }
-
     </style>
 </head>
 <body>
@@ -42,6 +39,7 @@
 <div id="loader"><div class="spinner"></div><p>Memuat...</p></div>
 
 <div class="ad-box">
+    <div id="ad-top">Partner Merpati ✨</div>
     <script src="https://pl28970450.profitablecpmratenetwork.com/34/83/cc/3483cc01879a0b87f5698fca3d8b6067.js"></script>
 </div>
 
@@ -56,10 +54,14 @@
     <section id="page-login" class="content-page active">
         <h2>Halo, Merpati! ✨</h2>
         <button class="main-btn" onclick="window.handleLogin()">Masuk dengan Google</button>
+        
+        <div style="margin-top: 20px;">
+            <script async="async" data-cfasync="false" src="https://pl28974414.profitablecpmratenetwork.com/fbffb4771c2d97dea17ecc5378bee6a5/invoke.js"></script>
+            <div id="container-fbffb4771c2d97dea17ecc5378bee6a5"></div>
+        </div>
     </section>
 
     <div id="main-content" class="content-page">
-        
         <section id="ideal" class="sub-page active">
             <h2>Body Visualizer</h2>
             <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 10px;">
@@ -72,10 +74,11 @@
             
             <div id="hasilBMI" class="visual-container">
                 <p id="status-teks" style="font-weight:bold; font-size: 18px; color: var(--pink-bold); margin-bottom: 5px;"></p>
-                <p id="bmi-angka" style="font-size: 14px; color: #999; margin: 0;"></p>
+                <p id="bmi-angka" style="font-size: 14px; color: #999; margin-bottom: 10px;"></p>
                 <div class="body-img-container">
-                    <img id="img-visual" class="body-img" src="" alt="Visualisasi Tubuh">
+                    <img id="img-visual" class="body-img" src="" alt="Visualisasi">
                 </div>
+                <p id="ukuran-badan" style="font-size:13px; font-weight: 600; color: var(--text); background: #fff; padding: 5px; border-radius: 10px;"></p>
                 <p id="saran-teks" style="font-size:12px; margin-top:10px; line-height: 1.5;"></p>
             </div>
         </section>
@@ -97,6 +100,13 @@
             <input type="text" id="nama2" placeholder="Nama Pasangan">
             <button class="main-btn" onclick="window.cekJodoh()">Cek ❤️</button>
             <h1 id="hasilJodoh" style="color:var(--pink-bold);"></h1>
+            
+            <div style="margin-top:15px;">
+                <script>
+                    atOptions = { 'key' : '0d9622e9e779ea401d2f05433e1b0674', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
+                </script>
+                <script src="https://www.highperformanceformat.com/0d9622e9e779ea401d2f05433e1b0674/invoke.js"></script>
+            </div>
         </section>
     </div>
 
@@ -108,13 +118,13 @@
 </div>
 
 <div class="ad-box">
+    <div id="ad-bottom">Promosi Spesial Merpati 🌸</div>
     <script src="https://pl28971006.profitablecpmratenetwork.com/b5/06/21/b5062164c8e2ce615f79e8b920276e0b.js"></script>
 </div>
 
 <div class="footer-name" style="color:#ccc; font-size:10px; margin-bottom:20px;">merpati digital creative</div>
 
 <script type="module">
-    // --- INTEGRASI FIREBASE ---
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
     import { getFirestore, collection, addDoc, query, where, onSnapshot, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
@@ -135,14 +145,12 @@
     const urlParams = new URLSearchParams(window.location.search);
     const receiverID = urlParams.get('to');
 
-    // --- AUTENTIKASI ---
     window.handleLogin = () => signInWithPopup(auth, provider);
     window.logout = () => signOut(auth).then(() => location.href = location.origin + location.pathname);
 
     onAuthStateChanged(auth, (user) => {
         document.getElementById('loader').style.display = 'none';
         document.querySelectorAll('.content-page').forEach(s => s.classList.remove('active'));
-
         if (user) {
             if (receiverID && receiverID !== user.uid) { 
                 document.getElementById('page-send-msg').classList.add('active');
@@ -175,7 +183,6 @@
         });
     }
 
-    // --- LOGIKA BODY VISUALIZER (PERBAIKAN GAMBAR & UKURAN) ---
     window.hitungVisual = () => {
         const isWanita = document.getElementById('genderWanita').checked;
         const bb = parseFloat(document.getElementById('berat').value);
@@ -187,30 +194,29 @@
         const resContainer = document.getElementById('hasilBMI');
         resContainer.style.display = "block";
         
-        let txt = "", img = "", srn = "", ukuran = "";
+        let txt = "", img = "", srn = "", detilUkuran = "";
 
-        // Estimasi Ukuran Badan Sederhana
-        const estimasiPinggang = isWanita ? (tb * 0.42).toFixed(0) : (tb * 0.45).toFixed(0);
-        const estimasiPinggul = isWanita ? (tb * 0.55).toFixed(0) : (tb * 0.52).toFixed(0);
+        const pinggang = isWanita ? (tb * 0.40).toFixed(0) : (tb * 0.44).toFixed(0);
+        const pinggul = isWanita ? (tb * 0.56).toFixed(0) : (tb * 0.50).toFixed(0);
+        const dada = isWanita ? (tb * 0.52).toFixed(0) : (tb * 0.58).toFixed(0);
 
         if(isWanita) {
-            // Logika Gambar Wanita
+            detilUkuran = `Estimasi: Dada ${dada}cm | Pinggang ${pinggang}cm | Pinggul ${pinggul}cm`;
             if(bmi < 18.5) {
                 txt = "Kurus (Underweight)";
                 img = "https://cdn-icons-png.flaticon.com/512/6997/6997666.png"; 
-                srn = "Tubuhmu ramping sekali, Merpati. Jangan lupa makan nutrisi yang cukup ya!";
+                srn = "Tubuhmu ramping, Merpati. Yuk, tambah asupan nutrisi dan protein!";
             } else if(bmi < 25) {
                 txt = "Ideal ✨";
                 img = "https://cdn-icons-png.flaticon.com/512/6997/6997671.png";
-                srn = "Wah, bentuk tubuhmu sangat proporsional! Pertahankan gaya hidup sehatmu.";
+                srn = "Bentuk tubuhmu sangat proporsional! Pertahankan ya.";
             } else {
-                txt = "Berisi / Obesitas";
+                txt = "Berisi / Overweight";
                 img = "https://cdn-icons-png.flaticon.com/512/6998/6998065.png";
-                srn = "Tubuhmu terlihat berisi. Yuk, mulai rutin olahraga dan jaga pola makan!";
+                srn = "Wah terlihat berisi! Yuk, imbangi dengan olahraga rutin.";
             }
-            ukuran = `Estimasi Lingkar: Pinggang ±${estimasiPinggang}cm, Pinggul ±${estimasiPinggul}cm`;
         } else {
-            // Logika Gambar Pria
+            detilUkuran = `Estimasi: Bahu ${pinggul}cm | Pinggang ${pinggang}cm | Dada ${dada}cm`;
             if(bmi < 18.5) {
                 txt = "Kurus (Underweight)";
                 img = "https://cdn-icons-png.flaticon.com/512/4202/4202831.png";
@@ -218,15 +224,15 @@
                 txt = "Ideal ✨";
                 img = "https://cdn-icons-png.flaticon.com/512/4202/4202843.png";
             } else {
-                txt = "Berisi / Obesitas";
+                txt = "Berisi / Overweight";
                 img = "https://cdn-icons-png.flaticon.com/512/4202/4202835.png";
             }
-            srn = "Kesehatan itu penting, Merpati. Semangat untuk tetap aktif setiap hari!";
-            ukuran = `Estimasi Lingkar: Pinggang ±${estimasiPinggang}cm, Dada ±${estimasiPinggul}cm`;
+            srn = "Tetap aktif dan jaga pola makan sehat agar stamina terjaga.";
         }
 
         document.getElementById('status-teks').innerText = txt;
-        document.getElementById('bmi-angka').innerHTML = `Skor BMI: ${bmi.toFixed(1)}<br><small style="color:#ff85a2">${ukuran}</small>`;
+        document.getElementById('bmi-angka').innerText = `Skor BMI: ${bmi.toFixed(1)}`;
+        document.getElementById('ukuran-badan').innerText = detilUkuran;
         document.getElementById('img-visual').src = img;
         document.getElementById('saran-teks').innerText = srn;
     };
