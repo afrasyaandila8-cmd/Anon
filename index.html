@@ -164,52 +164,55 @@
 
     // LOGIKA BODY VISUALIZER (FULL BODY)
     window.hitungVisual = () => {
-        const gen = document.getElementById('gender').value;
-        const bb = parseFloat(document.getElementById('berat').value);
-        const tb = parseFloat(document.getElementById('tinggi').value);
-        if(!bb || !tb) return alert("Isi data!");
+    const gen = document.getElementById('gender').value;
+    const bb = parseFloat(document.getElementById('berat').value);
+    const tb = parseFloat(document.getElementById('tinggi').value);
+    if(!bb || !tb) return alert("Isi data dulu ya!");
 
-        const bmi = bb / ((tb/100)**2);
-        const res = document.getElementById('hasilBMI');
-        res.style.display = "block";
-        
-        let txt = "", img = "", srn = "";
+    const bmi = bb / ((tb/100)**2);
+    const res = document.getElementById('hasilBMI');
+    res.style.display = "block";
+    
+    let txt = "", img = "", srn = "";
 
-        if(gen === 'wanita') {
-            if(bmi < 18.5) {
-                txt = "Kurus (Underweight)";
-                img = "https://cdn-icons-png.flaticon.com/512/6997/6997662.png"; // Gambar Wanita Kurus
-                srn = "Bentuk tubuhmu sangat ramping. Perlu asupan nutrisi lebih.";
-            } else if(bmi < 25) {
-                txt = "Ideal ✨";
-                img = "https://cdn-icons-png.flaticon.com/512/6997/6997671.png"; // Gambar Wanita Ideal
-                srn = "Bentuk tubuhmu proporsional dan sangat bagus!";
-            } else {
-                txt = "Berisi (Overweight)";
-                img = "https://cdn-icons-png.flaticon.com/512/6997/6997674.png"; // Gambar Wanita Berisi
-                srn = "Bentuk tubuhmu bervolume. Ayo olahraga agar tetap bugar.";
-            }
+    if(gen === 'wanita') {
+        if(bmi < 18.5) {
+            txt = "Kurus (Underweight)";
+            // Ikon Wanita Langsing
+            img = "https://cdn-icons-png.flaticon.com/512/6997/6997662.png"; 
+            srn = "Tubuhmu sangat ramping. Pastikan asupan nutrisi tercukupi agar tetap berenergi!";
+        } else if(bmi < 25) {
+            txt = "Ideal ✨";
+            // Ikon Wanita Proporsional
+            img = "https://cdn-icons-png.flaticon.com/512/6997/6997671.png"; 
+            srn = "Wah, bentuk tubuhmu sangat proporsional! Pertahankan pola hidup sehatmu.";
         } else {
-            // Logika untuk Pria
-            if(bmi < 18.5) {
-                txt = "Kurus";
-                img = "https://cdn-icons-png.flaticon.com/512/4140/4140037.png";
-                srn = "Tubuhmu terlihat kurang berisi.";
-            } else if(bmi < 25) {
-                txt = "Ideal";
-                img = "https://cdn-icons-png.flaticon.com/512/4140/4140048.png";
-                srn = "Tubuhmu tegap dan ideal.";
-            } else {
-                txt = "Berisi";
-                img = "https://cdn-icons-png.flaticon.com/512/4140/4140047.png";
-                srn = "Sudah mulai berisi, jaga pola makan ya.";
-            }
+            txt = "Berisi (Overweight)";
+            // Ikon Wanita Berisi (Mirip referensi gambar yang kamu unggah)
+            img = "https://cdn-icons-png.flaticon.com/512/6997/6997674.png"; 
+            srn = "Tubuhmu terlihat berisi dan menggemaskan. Jangan lupa olahraga ringan agar tetap bugar.";
         }
+    } else {
+        // Logika untuk Pria
+        if(bmi < 18.5) {
+            txt = "Kurus";
+            img = "https://cdn-icons-png.flaticon.com/512/4140/4140037.png";
+            srn = "Tubuhmu terlihat kurang berisi, coba tambah porsi makan dan protein.";
+        } else if(bmi < 25) {
+            txt = "Ideal";
+            img = "https://cdn-icons-png.flaticon.com/512/4140/4140048.png";
+            srn = "Tubuhmu tegap dan ideal. Keren!";
+        } else {
+            txt = "Berisi";
+            img = "https://cdn-icons-png.flaticon.com/512/4140/4140047.png";
+            srn = "Sudah mulai berisi, yuk mulai rutin jalan santai atau cardio.";
+        }
+    }
 
-        document.getElementById('status-teks').innerText = txt;
-        document.getElementById('img-visual').src = img;
-        document.getElementById('saran-teks').innerText = srn;
-    };
+    document.getElementById('status-teks').innerText = txt;
+    document.getElementById('img-visual').src = img;
+    document.getElementById('saran-teks').innerText = srn;
+};
 
     window.copyLink = () => { navigator.clipboard.writeText(document.getElementById('link-display').innerText).then(()=>alert("Tersalin!")); };
     window.shareWA = () => { window.open("https://wa.me/?text=Kirim pesan rahasia: " + document.getElementById('link-display').innerText); };
