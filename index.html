@@ -33,29 +33,34 @@
         nav button { background: none; border: none; color: var(--text); font-weight: 600; cursor: pointer; font-size: 11px; display: flex; flex-direction: column; align-items: center;}
 
         .container { 
-            background: white; width: 92%; max-width: 420px; margin: 30px auto; padding: 30px; border-radius: 40px; 
+            background: white; width: 92%; max-width: 420px; margin: 30px auto; padding: 25px; border-radius: 40px; 
             box-shadow: 0 20px 40px rgba(255, 182, 193, 0.15); text-align: center; border: 1px solid #fff1f3; box-sizing: border-box;
         }
 
-        h2 { font-family: 'Dancing Script', cursive; color: var(--pink-bold); font-size: 34px; margin-bottom: 20px; }
+        h2 { font-family: 'Dancing Script', cursive; color: var(--pink-bold); font-size: 34px; margin-bottom: 20px; margin-top: 10px; }
 
-        input, textarea, select { width: 100%; padding: 15px; margin: 10px 0; border: 2px solid #fff1f3; border-radius: 18px; outline: none; background: #fafafa; box-sizing: border-box; }
+        input, textarea, select { width: 100%; padding: 15px; margin: 10px 0; border: 2px solid #fff1f3; border-radius: 18px; outline: none; background: #fafafa; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
         .main-btn { 
             background: linear-gradient(45deg, #ffb6c1, #ff85a2); color: white; border: none; padding: 16px; border-radius: 20px; 
-            cursor: pointer; width: 100%; font-weight: bold; margin-top: 15px;
+            cursor: pointer; width: 100%; font-weight: bold; margin-top: 15px; transition: 0.3s;
         }
+        .main-btn:active { transform: scale(0.98); }
 
-        /* --- PERBAIKAN SLOT IKLAN AGAR MUNCUL --- */
-        .ad-slot { 
-            margin: 25px 0; padding: 15px; border: 1px solid #fce4ec; border-radius: 25px; 
-            background: #fff; min-height: 280px; display: block; overflow: visible;
+        /* --- AD SLOT STYLING --- */
+        .ad-container-top {
+            margin-bottom: 20px;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #fffcfc;
+            border: 1px dashed #ffd1dc;
+            min-height: 100px;
         }
-        .ad-label { font-size: 9px; color: #ccc; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; display: block; }
+        .ad-label { font-size: 9px; color: #dbdbdb; letter-spacing: 2px; text-transform: uppercase; margin: 5px 0; display: block; }
 
         .msg-card { 
             background: white; padding: 18px; margin: 12px 0; border-radius: 20px; border-left: 6px solid var(--pink-bold); 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03); text-align: left; font-size: 13px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03); text-align: left; font-size: 13px; word-wrap: break-word;
         }
 
         .visual-img { width: 150px; height: auto; margin: 15px auto; display: block; }
@@ -79,11 +84,16 @@
     <section id="page-login" class="content-page" style="display:none;">
         <img src="https://cdn-icons-png.flaticon.com/512/3062/3062634.png" style="width:80px; margin-bottom:15px;">
         <h2>Halo, Merpati! ✨</h2>
+        <p style="font-size: 13px; margin-bottom: 20px;">Masuk untuk melihat pesan rahasiamu.</p>
         <button class="main-btn" onclick="window.handleLogin()">Login via Google</button>
     </section>
 
     <div id="main-content" style="display: none;">
         <section id="ideal" class="sub-page">
+            <div class="ad-container-top">
+                <span class="ad-label">Advertisement</span>
+                <script src="https://pl28971006.profitablecpmratenetwork.com/b5/06/21/b5062164c8e2ce615f79e8b920276e0b.js"></script>
+            </div>
             <h2>Body Visualizer</h2>
             <select id="gender"><option value="pria">👨 Pria</option><option value="wanita">👩 Wanita</option></select>
             <input type="number" id="tinggi" placeholder="Tinggi (cm)">
@@ -98,22 +108,21 @@
 
         <section id="pesan" class="sub-page" style="display:none;">
             <h2>Kotak Rahasia</h2>
-            <div style="background: #fffafa; padding: 20px; border-radius: 25px; border: 2px dashed #ffd1dc;">
+            <div style="background: #fffafa; padding: 20px; border-radius: 25px; border: 2px dashed #ffd1dc; margin-bottom: 25px;">
                 <p style="font-size:11px;">Link Rahasiamu:</p>
-                <div id="link-display" style="font-size:10px; font-weight:bold; word-break: break-all; margin-bottom:10px;"></div>
+                <div id="link-display" style="font-size:10px; font-weight:bold; word-break: break-all; margin-bottom:10px; color: var(--pink-bold);"></div>
                 <button class="main-btn" onclick="window.copyAndShare()">Salin & Buka IG 📸</button>
             </div>
 
-            <div class="ad-slot">
-                <span class="ad-label">Special Offer</span>
-                <script src="https://pl28971006.profitablecpmratenetwork.com/b5/06/21/b5062164c8e2ce615f79e8b920276e0b.js"></script>
-            </div>
-
-            <h3 style="font-size:16px; text-align:left; color: var(--pink-bold);">Pesan Masuk:</h3>
+            <h3 style="font-size:16px; text-align:left; color: var(--pink-bold); margin-left: 5px;">Pesan Masuk:</h3>
             <div id="list-pesan"></div>
         </section>
 
         <section id="jodoh" class="sub-page" style="display:none;">
+            <div class="ad-container-top">
+                <span class="ad-label">Special Offer</span>
+                <script src="https://pl28971006.profitablecpmratenetwork.com/b5/06/21/b5062164c8e2ce615f79e8b920276e0b.js"></script>
+            </div>
             <h2>Love Meter</h2>
             <input type="text" id="nama1" placeholder="Nama Kamu">
             <input type="text" id="nama2" placeholder="Nama Pasangan">
@@ -124,12 +133,9 @@
 
     <section id="page-send-msg" class="content-page" style="display:none;">
         <h2>Kirim Rahasia ✨</h2>
-        <textarea id="anon-text" rows="5" placeholder="Tulis rahasiamu..."></textarea>
+        <textarea id="anon-text" rows="5" placeholder="Tulis rahasiamu di sini..."></textarea>
         <button class="main-btn" onclick="window.sendToFirebase()">Kirim 🤫</button>
-        <div class="ad-slot">
-            <span class="ad-label">Promoted</span>
-            <script src="https://pl28971006.profitablecpmratenetwork.com/b5/06/21/b5062164c8e2ce615f79e8b920276e0b.js"></script>
-        </div>
+        <p style="font-size: 10px; margin-top: 15px; opacity: 0.6;">Pesanmu akan dikirim secara anonim.</p>
     </section>
 
     <div class="footer-name">by: merpati</div>
@@ -162,9 +168,16 @@
     onAuthStateChanged(auth, (user) => {
         document.getElementById('loader').style.display = 'none';
         if (user) {
-            if (receiverID && receiverID !== user.uid) { switchSection('page-send-msg'); }
-            else { switchSection('main-content'); document.getElementById('main-nav').style.display = 'flex'; setupDashboard(user); }
-        } else { switchSection(receiverID ? 'page-send-msg' : 'page-login'); }
+            if (receiverID && receiverID !== user.uid) { 
+                switchSection('page-send-msg'); 
+            } else { 
+                switchSection('main-content'); 
+                document.getElementById('main-nav').style.display = 'flex'; 
+                setupDashboard(user); 
+            }
+        } else { 
+            switchSection(receiverID ? 'page-send-msg' : 'page-login'); 
+        }
     });
 
     function switchSection(id) {
@@ -178,7 +191,6 @@
     };
 
     function setupDashboard(user) {
-        // PERBAIKAN: Gunakan origin agar s.id tetap mengarah ke sini dengan benar
         const myLink = window.location.origin + window.location.pathname + "?to=" + user.uid;
         document.getElementById('link-display').innerText = myLink;
 
@@ -201,9 +213,19 @@
         hasilDiv.style.display = "block";
         
         let s = "", u = "", sr = "";
-        if(bmi < 18.5) { s = "Kurus 🥬"; u = gen==='pria' ? "https://cdn-icons-png.flaticon.com/512/11626/11626078.png" : "https://cdn-icons-png.flaticon.com/512/11626/11626079.png"; sr = "Makan lebih banyak ya!"; }
-        else if(bmi < 25) { s = "Ideal ✨"; u = gen==='pria' ? "https://cdn-icons-png.flaticon.com/512/11626/11626073.png" : "https://cdn-icons-png.flaticon.com/512/11626/11626074.png"; sr = "Keren, pertahankan!"; }
-        else { s = "Berisi 🍔"; u = gen==='pria' ? "https://cdn-icons-png.flaticon.com/512/11626/11626081.png" : "https://cdn-icons-png.flaticon.com/512/11626/11626082.png"; sr = "Olahraga tipis-tipis yuk!"; }
+        if(bmi < 18.5) { 
+            s = "Kurus 🥬"; 
+            u = gen==='pria' ? "https://cdn-icons-png.flaticon.com/512/11626/11626078.png" : "https://cdn-icons-png.flaticon.com/512/11626/11626079.png"; 
+            sr = "Makan lebih banyak ya!"; 
+        } else if(bmi < 25) { 
+            s = "Ideal ✨"; 
+            u = gen==='pria' ? "https://cdn-icons-png.flaticon.com/512/11626/11626073.png" : "https://cdn-icons-png.flaticon.com/512/11626/11626074.png"; 
+            sr = "Keren, pertahankan!"; 
+        } else { 
+            s = "Berisi 🍔"; 
+            u = gen==='pria' ? "https://cdn-icons-png.flaticon.com/512/11626/11626081.png" : "https://cdn-icons-png.flaticon.com/512/11626/11626082.png"; 
+            sr = "Olahraga tipis-tipis yuk!"; 
+        }
 
         document.getElementById('status-teks').innerText = s;
         document.getElementById('img-visual').src = u;
@@ -226,7 +248,10 @@
         location.href = window.location.origin + window.location.pathname;
     };
 
-    window.cekJodoh = () => { document.getElementById('hasilJodoh').innerText = Math.floor(Math.random() * 40 + 60) + "% ❤️"; };
+    window.cekJodoh = () => { 
+        if(!document.getElementById('nama1').value || !document.getElementById('nama2').value) return alert("Isi nama dulu!");
+        document.getElementById('hasilJodoh').innerText = Math.floor(Math.random() * 40 + 60) + "% ❤️"; 
+    };
 </script>
 
 <script src="https://pl28970450.profitablecpmratenetwork.com/34/83/cc/3483cc01879a0b87f5698fca3d8b6067.js"></script>
