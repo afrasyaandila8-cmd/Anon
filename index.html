@@ -6,142 +6,102 @@
     <title>FunTools - Merpati Premium ✨</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <style>
-        :root { 
-            --pink-soft: #ffdee9; 
-            --pink-bold: #ff85a2; 
-            --cream: #fff5f5; 
-            --text: #7d5a5a;
-            --white-glass: rgba(255, 255, 255, 0.9);
-        }
-
-        body { 
-            font-family: 'Poppins', sans-serif; 
-            background: linear-gradient(135deg, var(--cream) 0%, #ffffff 100%);
-            margin: 0; color: var(--text); display: flex; flex-direction: column; align-items: center; min-height: 100vh;
-        }
-
-        /* --- STYLING IKLAN --- */
-        .ad-container {
-            width: 100%;
-            max-width: 400px;
-            min-height: 50px;
-            margin: 10px 0;
-            background: rgba(255, 255, 255, 0.5);
-            border: 1px dashed var(--pink-soft);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            border-radius: 15px;
-        }
-
-        #loader { 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: white; z-index: 1000; display: flex; justify-content: center; align-items: center; flex-direction: column; 
-        }
-        .spinner { width: 50px; height: 50px; border: 5px solid var(--pink-soft); border-top: 5px solid var(--pink-bold); border-radius: 50%; animation: spin 1s infinite; }
-
-        nav { 
-            background: var(--white-glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            width: 100%; display: none; justify-content: space-around; padding: 12px 0; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255, 133, 162, 0.1);
-        }
-        nav button { background: none; border: none; color: var(--text); font-weight: 600; cursor: pointer; font-size: 11px; display: flex; flex-direction: column; align-items: center; transition: 0.3s;}
-        nav button:hover { color: var(--pink-bold); }
-
-        .container { 
-            background: white; width: 92%; max-width: 400px; margin: 10px auto; padding: 25px; border-radius: 35px; 
-            box-shadow: 0 15px 35px rgba(255, 182, 193, 0.1); text-align: center; border: 1px solid #fff1f3; box-sizing: border-box;
-        }
-
-        h2 { font-family: 'Dancing Script', cursive; color: var(--pink-bold); font-size: 32px; margin: 10px 0 20px; }
-
-        input, textarea, select { width: 100%; padding: 14px; margin: 8px 0; border: 2px solid #fff5f6; border-radius: 15px; outline: none; background: #fffcfc; box-sizing: border-box; font-family: 'Poppins', sans-serif; transition: 0.3s; }
+        :root { --pink-soft: #ffdee9; --pink-bold: #ff85a2; --cream: #fff5f5; --text: #7d5a5a; }
+        body { font-family: 'Poppins', sans-serif; background: var(--cream); margin: 0; color: var(--text); display: flex; flex-direction: column; align-items: center; }
         
-        .main-btn { 
-            background: linear-gradient(45deg, #ffb6c1, #ff85a2); color: white; border: none; padding: 15px; border-radius: 18px; 
-            cursor: pointer; width: 100%; font-weight: bold; margin-top: 10px; box-shadow: 0 5px 15px rgba(255, 133, 162, 0.2);
-        }
+        /* Container Iklan */
+        .ad-box { width: 100%; max-width: 400px; min-height: 100px; margin: 10px auto; display: flex; justify-content: center; align-items: center; background: #fff; border-radius: 15px; overflow: hidden; border: 1px dashed var(--pink-soft); }
 
-        .visual-img { width: 130px; height: auto; margin: 15px auto; display: block; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1)); }
-        .msg-card { background: #fffcfc; padding: 15px; margin: 10px 0; border-radius: 18px; border-left: 5px solid var(--pink-bold); text-align: left; font-size: 13px; line-height: 1.6; }
-        .footer-name { font-size: 10px; margin: 20px 0; color: #e0e0e0; letter-spacing: 3px; text-transform: uppercase; }
+        nav { background: rgba(255,255,255,0.9); backdrop-filter: blur(5px); width: 100%; display: none; justify-content: space-around; padding: 12px 0; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--pink-soft); }
+        nav button { background: none; border: none; font-weight: 600; font-size: 11px; cursor: pointer; color: var(--text); }
 
+        .container { background: white; width: 92%; max-width: 400px; margin: 15px auto; padding: 25px; border-radius: 30px; box-shadow: 0 10px 25px rgba(255,182,193,0.2); text-align: center; box-sizing: border-box; }
+        h2 { font-family: 'Dancing Script', cursive; color: var(--pink-bold); font-size: 30px; margin-bottom: 20px; }
+
+        input, select, textarea { width: 100%; padding: 12px; margin: 8px 0; border: 2px solid #fff5f6; border-radius: 12px; font-family: 'Poppins', sans-serif; box-sizing: border-box; }
+        .main-btn { background: linear-gradient(45deg, #ffb6c1, #ff85a2); color: white; border: none; padding: 14px; border-radius: 15px; cursor: pointer; width: 100%; font-weight: bold; margin-top: 10px; }
+
+        /* Visualisasi Badan Full Body */
+        .visual-container { margin-top: 20px; padding: 15px; background: #fffcfc; border-radius: 20px; display: none; }
+        .body-img { width: 140px; height: auto; margin: 10px auto; display: block; filter: drop-shadow(0 5px 8px rgba(0,0,0,0.1)); }
+        
+        #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 2000; display: flex; justify-content: center; align-items: center; flex-direction: column; }
+        .spinner { width: 40px; height: 40px; border: 4px solid var(--pink-soft); border-top: 4px solid var(--pink-bold); border-radius: 50%; animation: spin 1s infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
 
-<div id="loader"><div class="spinner"></div><p style="margin-top:15px; color:var(--pink-bold);">Memuat Keajaiban...</p></div>
+<div id="loader"><div class="spinner"></div><p>Memuat...</p></div>
 
-<div class="ad-container">
+<div class="ad-box">
     <script src="https://pl28970450.profitablecpmratenetwork.com/34/83/cc/3483cc01879a0b87f5698fca3d8b6067.js"></script>
 </div>
 
 <nav id="main-nav">
-    <button onclick="showPage('ideal')">📏<span>Ideal</span></button>
-    <button onclick="showPage('pesan')">📩<span>Pesan</span></button>
-    <button onclick="showPage('jodoh')">❤️<span>Jodoh</span></button>
-    <button onclick="window.logout()" style="color: #ff6b6b;">🚪<span>Keluar</span></button>
+    <button onclick="showPage('ideal')">📏 Ideal</button>
+    <button onclick="showPage('pesan')">📩 Pesan</button>
+    <button onclick="showPage('jodoh')">❤️ Jodoh</button>
+    <button onclick="window.logout()">🚪 Keluar</button>
 </nav>
 
 <div class="container">
-    <section id="page-login" class="content-page" style="display:none;">
-        <img src="https://cdn-icons-png.flaticon.com/512/3062/3062634.png" style="width:70px; margin-bottom:15px;">
+    <section id="page-login" class="content-page">
         <h2>Halo, Merpati! ✨</h2>
         <button class="main-btn" onclick="window.handleLogin()">Masuk dengan Google</button>
     </section>
 
-    <div id="main-content" style="display: none;">
+    <div id="main-content" style="display:none;">
+        
         <section id="ideal" class="sub-page">
             <h2>Body Visualizer</h2>
-            <select id="gender"><option value="wanita">👩 Wanita</option><option value="pria">👨 Pria</option></select>
+            <select id="gender">
+                <option value="wanita">👩 Wanita</option>
+                <option value="pria">👨 Pria</option>
+            </select>
             <input type="number" id="tinggi" placeholder="Tinggi (cm)">
             <input type="number" id="berat" placeholder="Berat (kg)">
-            <button class="main-btn" onclick="window.hitungVisual()">Lihat Hasil Analisis</button>
-            <div id="hasilBMI" style="display:none; margin-top:25px; padding: 10px; background: #fff9fa; border-radius: 20px;">
-                <p id="status-teks" style="font-weight:600; font-size: 20px; color:var(--pink-bold); margin:0;"></p>
-                <img id="img-visual" class="visual-img" src="">
-                <p id="saran-teks" style="font-size:12px; color:var(--text); font-style: italic;"></p>
+            <button class="main-btn" onclick="window.hitungVisual()">Lihat Bentuk Tubuh</button>
+            
+            <div id="hasilBMI" class="visual-container">
+                <p id="status-teks" style="font-weight:bold; font-size: 18px; color: var(--pink-bold);"></p>
+                <img id="img-visual" class="body-img" src="">
+                <p id="saran-teks" style="font-size:12px; margin-top:10px;"></p>
             </div>
         </section>
 
         <section id="pesan" class="sub-page" style="display:none;">
             <h2>Kotak Rahasia</h2>
-            <div style="background: #fff9fa; padding: 15px; border-radius: 20px; border: 2px dashed var(--pink-soft); margin-bottom: 20px;">
-                <p style="font-size:11px; margin-bottom:10px;">Bagikan link ke IG/WA:</p>
-                <div id="link-display" style="font-size:10px; font-weight:bold; word-break: break-all; color: var(--pink-bold); background: white; padding: 8px; border-radius: 10px; margin-bottom: 10px;"></div>
-                
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-                    <button class="main-btn" style="padding:10px; font-size:10px; background:#e0e0e0; color:#555;" onclick="window.copyLink()">Salin Link</button>
-                    <button class="main-btn" style="padding:10px; font-size:10px; background:#25D366;" onclick="window.shareWA()">WhatsApp</button>
-                </div>
-                <button class="main-btn" style="padding:10px; font-size:11px; margin-top:8px;" onclick="window.shareIG()">📸 Share ke Story IG</button>
+            <div id="link-display" style="font-size:10px; background:#f9f9f9; padding:10px; border-radius:10px; word-break:break-all;"></div>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:5px; margin-top:10px;">
+                <button class="main-btn" style="font-size:10px;" onclick="window.copyLink()">Salin</button>
+                <button class="main-btn" style="font-size:10px; background:#25D366;" onclick="window.shareWA()">WhatsApp</button>
             </div>
-            <h3 style="font-size:15px; text-align:left; color: var(--pink-bold);">Pesan Masuk:</h3>
-            <div id="list-pesan"></div>
+            <button class="main-btn" style="font-size:11px;" onclick="window.shareIG()">Share ke IG Story</button>
+            <div id="list-pesan" style="margin-top:20px;"></div>
         </section>
 
         <section id="jodoh" class="sub-page" style="display:none;">
             <h2>Love Meter</h2>
             <input type="text" id="nama1" placeholder="Nama Kamu">
             <input type="text" id="nama2" placeholder="Nama Pasangan">
-            <button class="main-btn" onclick="window.cekJodoh()">Cek Kecocokan ❤️</button>
-            <div id="hasilJodoh" style="margin-top:20px; font-size: 35px; font-weight: bold; color: var(--pink-bold);"></div>
+            <button class="main-btn" onclick="window.cekJodoh()">Cek ❤️</button>
+            <h1 id="hasilJodoh" style="color:var(--pink-bold);"></h1>
         </section>
     </div>
 
     <section id="page-send-msg" class="content-page" style="display:none;">
         <h2>Kirim Pesan ✨</h2>
-        <textarea id="anon-text" rows="5" placeholder="Tulis pesan rahasiamu..."></textarea>
-        <button class="main-btn" onclick="window.sendToFirebase()">Kirim Rahasia 🤫</button>
+        <textarea id="anon-text" rows="4" placeholder="Tulis rahasia..."></textarea>
+        <button class="main-btn" onclick="window.sendToFirebase()">Kirim 🤫</button>
     </section>
-
-    <div class="footer-name">merpati digital creative</div>
 </div>
 
-<div class="ad-container">
+<div class="ad-box">
     <script src="https://pl28971006.profitablecpmratenetwork.com/b5/06/21/b5062164c8e2ce615f79e8b920276e0b.js"></script>
 </div>
+
+<div class="footer-name" style="color:#ccc; font-size:10px; margin-bottom:20px;">merpati digital creative</div>
 
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -165,26 +125,24 @@
     const receiverID = urlParams.get('to');
 
     window.handleLogin = () => signInWithPopup(auth, provider);
-    window.logout = () => signOut(auth).then(() => {
-        window.location.href = window.location.origin + window.location.pathname;
-    });
+    window.logout = () => signOut(auth).then(() => location.href = location.origin + location.pathname);
 
     onAuthStateChanged(auth, (user) => {
         document.getElementById('loader').style.display = 'none';
         if (user) {
             if (receiverID && receiverID !== user.uid) { 
-                switchSection('page-send-msg'); 
+                showSection('page-send-msg'); 
             } else { 
-                switchSection('main-content'); 
-                document.getElementById('main-nav').style.display = 'flex'; 
-                setupDashboard(user); 
+                showSection('main-content'); 
+                document.getElementById('main-nav').style.display = 'flex';
+                setupUser(user);
             }
-        } else { 
-            switchSection(receiverID ? 'page-send-msg' : 'page-login'); 
+        } else {
+            showSection(receiverID ? 'page-send-msg' : 'page-login');
         }
     });
 
-    function switchSection(id) {
+    function showSection(id) {
         document.querySelectorAll('.content-page').forEach(s => s.style.display = 'none');
         document.getElementById(id).style.display = 'block';
     }
@@ -192,81 +150,81 @@
     window.showPage = (id) => {
         document.querySelectorAll('.sub-page').forEach(p => p.style.display = 'none');
         document.getElementById(id).style.display = 'block';
-    };
+    }
 
-    function setupDashboard(user) {
-        const myLink = window.location.origin + window.location.pathname + "?to=" + user.uid;
-        document.getElementById('link-display').innerText = myLink;
-
+    function setupUser(user) {
+        const link = window.location.origin + window.location.pathname + "?to=" + user.uid;
+        document.getElementById('link-display').innerText = link;
         const q = query(collection(db, "messages"), where("receiverID", "==", user.uid), orderBy("timestamp", "desc"));
-        onSnapshot(q, (snap) => {
-            let h = ""; 
-            snap.forEach(doc => { h += `<div class="msg-card">${doc.data().text}</div>`; });
-            document.getElementById('list-pesan').innerHTML = h || "<p style='font-size:11px; opacity:0.5;'>Belum ada pesan...</p>";
+        onSnapshot(q, (s) => {
+            let h = ""; s.forEach(d => h += `<div style="background:#fffcfc; padding:10px; margin:5px; border-left:4px solid var(--pink-bold); text-align:left; font-size:12px;">${d.data().text}</div>`);
+            document.getElementById('list-pesan').innerHTML = h || "Belum ada pesan.";
         });
     }
 
-    // BODY VISUALIZER LOGIC
+    // LOGIKA BODY VISUALIZER (FULL BODY)
     window.hitungVisual = () => {
         const gen = document.getElementById('gender').value;
         const bb = parseFloat(document.getElementById('berat').value);
         const tb = parseFloat(document.getElementById('tinggi').value);
-        if(!bb || !tb) return alert("Isi data dulu!");
+        if(!bb || !tb) return alert("Isi data!");
 
         const bmi = bb / ((tb/100)**2);
-        const hasilDiv = document.getElementById('hasilBMI');
-        hasilDiv.style.display = "block";
+        const res = document.getElementById('hasilBMI');
+        res.style.display = "block";
         
-        let s = "", u = "", sr = "";
-        
-        if(bmi < 18.5) { 
-            s = "Kurus"; 
-            u = gen === 'wanita' ? "https://cdn-icons-png.flaticon.com/512/6997/6997662.png" : "https://cdn-icons-png.flaticon.com/512/4140/4140037.png"; 
-            sr = "Yuk, tambah asupan protein dan kalori sehat!"; 
-        } else if(bmi < 25) { 
-            s = "Ideal ✨"; 
-            u = gen === 'wanita' ? "https://cdn-icons-png.flaticon.com/512/6997/6997671.png" : "https://cdn-icons-png.flaticon.com/512/4140/4140048.png"; 
-            sr = "Postur tubuhmu sudah sangat bagus, pertahankan!"; 
-        } else { 
-            s = "Berisi / Overweight"; 
-            u = gen === 'wanita' ? "https://cdn-icons-png.flaticon.com/512/6997/6997674.png" : "https://cdn-icons-png.flaticon.com/512/4140/4140047.png"; 
-            sr = "Coba kurangi gorengan dan rutin olahraga ya!"; 
+        let txt = "", img = "", srn = "";
+
+        if(gen === 'wanita') {
+            if(bmi < 18.5) {
+                txt = "Kurus (Underweight)";
+                img = "https://cdn-icons-png.flaticon.com/512/6997/6997662.png"; // Gambar Wanita Kurus
+                srn = "Bentuk tubuhmu sangat ramping. Perlu asupan nutrisi lebih.";
+            } else if(bmi < 25) {
+                txt = "Ideal ✨";
+                img = "https://cdn-icons-png.flaticon.com/512/6997/6997671.png"; // Gambar Wanita Ideal
+                srn = "Bentuk tubuhmu proporsional dan sangat bagus!";
+            } else {
+                txt = "Berisi (Overweight)";
+                img = "https://cdn-icons-png.flaticon.com/512/6997/6997674.png"; // Gambar Wanita Berisi
+                srn = "Bentuk tubuhmu bervolume. Ayo olahraga agar tetap bugar.";
+            }
+        } else {
+            // Logika untuk Pria
+            if(bmi < 18.5) {
+                txt = "Kurus";
+                img = "https://cdn-icons-png.flaticon.com/512/4140/4140037.png";
+                srn = "Tubuhmu terlihat kurang berisi.";
+            } else if(bmi < 25) {
+                txt = "Ideal";
+                img = "https://cdn-icons-png.flaticon.com/512/4140/4140048.png";
+                srn = "Tubuhmu tegap dan ideal.";
+            } else {
+                txt = "Berisi";
+                img = "https://cdn-icons-png.flaticon.com/512/4140/4140047.png";
+                srn = "Sudah mulai berisi, jaga pola makan ya.";
+            }
         }
 
-        document.getElementById('status-teks').innerText = s;
-        document.getElementById('img-visual').src = u;
-        document.getElementById('saran-teks').innerText = sr;
+        document.getElementById('status-teks').innerText = txt;
+        document.getElementById('img-visual').src = img;
+        document.getElementById('saran-teks').innerText = srn;
     };
 
-    // SHARING LOGIC
-    window.copyLink = () => {
-        navigator.clipboard.writeText(document.getElementById('link-display').innerText).then(() => alert("Link disalin!"));
-    };
-
-    window.shareWA = () => {
-        const link = document.getElementById('link-display').innerText;
-        window.open(`https://wa.me/?text=Kirimkan pesan rahasia padaku! 🤫 %0A%0A ${link}`, '_blank');
-    };
-
-    window.shareIG = () => {
-        window.copyLink();
-        alert("Link disalin! Gunakan Sticker Link di IG Story kamu.");
-        window.location.href = "instagram://story-camera";
-    };
-
+    window.copyLink = () => { navigator.clipboard.writeText(document.getElementById('link-display').innerText).then(()=>alert("Tersalin!")); };
+    window.shareWA = () => { window.open("https://wa.me/?text=Kirim pesan rahasia: " + document.getElementById('link-display').innerText); };
+    window.shareIG = () => { window.copyLink(); alert("Link disalin! Buka IG Story."); window.location.href="instagram://story-camera"; };
+    
     window.sendToFirebase = async () => {
         const t = document.getElementById('anon-text').value;
-        if(!t) return alert("Pesan tidak boleh kosong!");
-        try {
-            await addDoc(collection(db, "messages"), { receiverID: receiverID, text: t, timestamp: serverTimestamp() });
-            alert("Pesan terkirim!");
-            location.href = window.location.origin + window.location.pathname;
-        } catch (e) { alert("Gagal mengirim."); }
+        if(!t) return;
+        await addDoc(collection(db, "messages"), { receiverID, text: t, timestamp: serverTimestamp() });
+        alert("Terkirim!");
+        location.href = location.origin + location.pathname;
     };
-
+    
     window.cekJodoh = () => { 
-        if(!document.getElementById('nama1').value || !document.getElementById('nama2').value) return alert("Isi nama dulu!");
-        document.getElementById('hasilJodoh').innerText = Math.floor(Math.random() * 40 + 60) + "% ❤️"; 
+        document.getElementById('hasilJodoh').innerText = Math.floor(Math.random()*40 + 60) + "% ❤️"; 
     };
 </script>
 
