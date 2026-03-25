@@ -18,12 +18,12 @@
         h2 { font-family: 'Dancing Script', cursive; color: var(--pink-bold); font-size: 30px; margin-bottom: 20px; }
 
         input, select, textarea { width: 100%; padding: 12px; margin: 8px 0; border: 2px solid #fff5f6; border-radius: 12px; font-family: 'Poppins', sans-serif; box-sizing: border-box; outline: none; }
-        .main-btn { background: linear-gradient(45deg, #ffb6c1, #ff85a2); color: white; border: none; padding: 14px; border-radius: 15px; cursor: pointer; width: 100%; font-weight: bold; margin-top: 10px; transition: transform 0.1s; }
+        .main-btn { background: linear-gradient(45deg, #ffb6c1, #ff85a2); color: white; border: none; padding: 14px; border-radius: 15px; cursor: pointer; width: 100%; font-weight: bold; margin-top: 10px; transition: transform 0.1s; display: flex; align-items: center; justify-content: center; gap: 8px; }
         .main-btn:active { transform: scale(0.98); }
 
         .visual-container { margin-top: 20px; padding: 15px; background: #fffcfc; border-radius: 20px; display: none; border: 1px solid var(--pink-soft); }
         .body-img-container { width: 100%; display: flex; justify-content: center; margin: 15px 0; }
-        .body-img { width: 120px; height: auto; display: block; filter: drop-shadow(0 5px 8px rgba(255,133,162,0.3)); }
+        .body-img { width: 140px; height: auto; display: block; filter: drop-shadow(0 5px 8px rgba(255,133,162,0.3)); }
         
         #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 2000; display: flex; justify-content: center; align-items: center; flex-direction: column; }
         .spinner { width: 40px; height: 40px; border: 4px solid var(--pink-soft); border-top: 4px solid var(--pink-bold); border-radius: 50%; animation: spin 1s infinite; }
@@ -31,6 +31,9 @@
 
         .content-page, .sub-page { display: none; opacity: 0; transition: opacity 0.4s ease-in-out; }
         .content-page.active, .sub-page.active { display: block; opacity: 1; }
+        
+        .share-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 15px; }
+        .share-btn { font-size: 10px; padding: 10px 5px; border-radius: 10px; border: none; color: white; cursor: pointer; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -80,10 +83,13 @@
         <section id="pesan" class="sub-page">
             <h2>Kotak Rahasia</h2>
             <div id="link-display" style="font-size:10px; background:#f9f9f9; padding:10px; border-radius:10px; word-break:break-all; border: 1px solid #eee;"></div>
-            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:5px; margin-top:10px;">
-                <button class="main-btn" style="font-size:10px;" onclick="window.copyLink()">Salin Link</button>
-                <button class="main-btn" style="font-size:10px; background:#25D366;" onclick="window.shareWA()">WhatsApp</button>
+            
+            <div class="share-grid">
+                <button class="share-btn" style="background:#ff85a2;" onclick="window.copyLink()">📋 Salin</button>
+                <button class="share-btn" style="background:#25D366;" onclick="window.shareWA()">📱 WA</button>
+                <button class="share-btn" style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);" onclick="window.shareIG()">📸 IG</button>
             </div>
+
             <div id="list-pesan" style="margin-top:20px; max-height: 300px; overflow-y: auto;"></div>
         </section>
 
@@ -135,7 +141,6 @@
     const db = getFirestore(app);
     const provider = new GoogleAuthProvider();
 
-    // TANGKAP ID DARI LINK
     const urlParams = new URLSearchParams(window.location.search);
     const idTujuan = urlParams.get('to'); 
 
@@ -149,16 +154,13 @@
         document.querySelectorAll('.content-page').forEach(s => s.classList.remove('active'));
         
         if (idTujuan) {
-            // Jika buka link orang lain, langsung ke halaman kirim pesan
             document.getElementById('page-send-msg').classList.add('active');
             document.getElementById('main-nav').style.display = 'none';
         } else if (user) {
-            // Jika login sendiri, buka dashboard
             document.getElementById('main-content').classList.add('active'); 
             document.getElementById('main-nav').style.display = 'flex';
             setupUser(user);
         } else {
-            // Jika baru buka web, ke halaman login
             document.getElementById('page-login').classList.add('active');
         }
     });
@@ -169,11 +171,9 @@
     }
 
     function setupUser(user) {
-        // Buat link dengan UID asli Google
         const myLink = window.location.origin + window.location.pathname + "?to=" + user.uid;
         document.getElementById('link-display').innerText = myLink;
         
-        // Ambil pesan berdasarkan receiverID (UID Google)
         const q = query(collection(db, "messages"), where("receiverID", "==", user.uid), orderBy("timestamp", "desc"));
         onSnapshot(q, (snapshot) => {
             let html = ""; 
@@ -184,7 +184,7 @@
         });
     }
 
-    // --- FIX VISUALIZER GENDER & UKURAN ---
+    // --- FIX VISUALIZER: GENDER & GAMBAR FULL BODY ---
     window.hitungVisual = () => {
         const isWanita = document.getElementById('genderWanita').checked;
         const bb = parseFloat(document.getElementById('berat').value);
@@ -233,15 +233,15 @@
         document.getElementById('saran-teks').innerText = srn;
     };
 
-    // --- FIX PENGIRIMAN PESAN KE UID ---
+    // --- FIX PENGIRIMAN PESAN ---
     window.sendToFirebase = async () => {
         const text = document.getElementById('anon-text').value;
         if(!text) return alert("Pesan tidak boleh kosong!");
-        if(!idTujuan) return alert("ID Penerima tidak ditemukan dalam link!");
+        if(!idTujuan) return alert("ID Penerima tidak ditemukan!");
 
         try {
             await addDoc(collection(db, "messages"), { 
-                receiverID: idTujuan, // Menggunakan ID Diana dari link (?to=...)
+                receiverID: idTujuan,
                 text: text, 
                 timestamp: serverTimestamp() 
             });
@@ -249,12 +249,24 @@
             document.getElementById('anon-text').value = ''; 
         } catch (e) {
             console.error(e);
-            alert("Gagal kirim. Cek Rules Firestore Anda.");
+            alert("Gagal kirim. Pastikan Rules Firestore Anda 'allow create: if true'.");
         }
     };
 
-    window.copyLink = () => { navigator.clipboard.writeText(document.getElementById('link-display').innerText).then(()=>alert("Link tersalin!")); };
-    window.shareWA = () => { window.open("https://wa.me/?text=Hai! Kirim pesan rahasia ke aku yuk, anonim kok 🤫: " + document.getElementById('link-display').innerText); };
+    window.copyLink = () => { 
+        navigator.clipboard.writeText(document.getElementById('link-display').innerText).then(()=>alert("Link tersalin!")); 
+    };
+    
+    window.shareWA = () => { 
+        const link = document.getElementById('link-display').innerText;
+        window.open("https://wa.me/?text=" + encodeURIComponent("Kirim pesan rahasia ke aku yuk! Anonim kok: " + link)); 
+    };
+
+    window.shareIG = () => {
+        alert("Salin link kamu, lalu tempel di 'Link Sticker' pada Instagram Story ya! ✨");
+        window.open("https://www.instagram.com/");
+    };
+
     window.cekJodoh = () => { 
         const n1 = document.getElementById('nama1').value;
         const n2 = document.getElementById('nama2').value;
@@ -262,6 +274,5 @@
         document.getElementById('hasilJodoh').innerText = Math.floor(Math.random()*40 + 60) + "% ❤️"; 
     };
 </script>
-
 </body>
 </html>
