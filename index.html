@@ -36,45 +36,38 @@
 
         input, select, textarea { width: 100%; padding: 12px; margin: 8px 0; border: 2px solid #fff5f6; border-radius: 12px; font-family: 'Poppins', sans-serif; box-sizing: border-box; outline: none; font-size: 14px; }
         .main-btn { background: linear-gradient(45deg, #ffb6c1, #ff85a2); color: white; border: none; padding: 14px; border-radius: 15px; cursor: pointer; width: 100%; font-weight: bold; margin-top: 10px; transition: transform 0.1s; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .main-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
-        .visual-container { margin-top: 20px; padding: 15px; background: #fffcfc; border-radius: 20px; display: none; border: 1px solid var(--pink-soft); }
-        .body-img-container { width: 100%; display: flex; justify-content: center; margin: 15px 0; }
-        .body-img { width: 120px; height: auto; display: block; border-radius: 10px; }
+        /* Fitur Ramalan Style */
+        .fortune-card {
+            background: linear-gradient(135deg, #ffffff, #fff0f3);
+            border: 2px solid var(--pink-soft);
+            padding: 25px;
+            border-radius: 25px;
+            margin-top: 20px;
+            box-shadow: 0 8px 20px rgba(255, 133, 162, 0.1);
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         
+        .fortune-text { font-size: 16px; font-weight: 600; color: #555; line-height: 1.6; margin-bottom: 15px; }
+        .fortune-meta { font-size: 11px; color: var(--pink-bold); letter-spacing: 1px; text-transform: uppercase; border-top: 1px solid #eee; pt: 10px; }
+
         #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 2000; display: flex; justify-content: center; align-items: center; flex-direction: column; }
         .spinner { width: 40px; height: 40px; border: 4px solid var(--pink-soft); border-top: 4px solid var(--pink-bold); border-radius: 50%; animation: spin 1s infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         .content-page, .sub-page { display: none; opacity: 0; transition: opacity 0.4s ease-in-out; }
         .content-page.active, .sub-page.active { display: block; opacity: 1; }
-        
-        .share-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 15px; }
-        .share-btn { font-size: 10px; padding: 10px 5px; border-radius: 10px; border: none; color: white; cursor: pointer; font-weight: bold; }
-        .msg-card { background:#fff; border: 1px solid var(--pink-soft); padding:12px; margin:8px 0; border-left:5px solid var(--pink-bold); text-align:left; font-size:13px; border-radius: 10px; word-break: break-word; box-shadow: 2px 2px 5px rgba(0,0,0,0.02); }
     </style>
 </head>
 <body>
 
 <div id="loader"><div class="spinner"></div><p>Memuat...</p></div>
 
-<div class="ad-container">
-    <span class="ad-label">ADVERTISEMENT</span>
-    <script type="text/javascript">
-        atOptions = {
-            'key' : '0d9622e9e779ea401d2f05433e1b0674',
-            'format' : 'iframe',
-            'height' : 250,
-            'width' : 300,
-            'params' : {}
-        };
-    </script>
-    <script type="text/javascript" src="https://deductpursue.com/0d9622e9e779ea401d2f05433e1b0674/invoke.js"></script>
-</div>
-
 <nav id="main-nav">
-    <button onclick="window.showSubPage('ideal')">📏 Ideal</button>
-    <button onclick="window.showSubPage('pesan')">📩 Pesan</button>
+    <button onclick="window.showSubPage('ideal')">📏 Tubuh</button>
+    <button onclick="window.showSubPage('ramalan')">🔮 Ramalan</button>
     <button onclick="window.showSubPage('jodoh')">❤️ Jodoh</button>
     <button onclick="window.logout()">🚪 Keluar</button>
 </nav>
@@ -82,17 +75,11 @@
 <div class="container">
     <section id="page-login" class="content-page">
         <h2>Halo, Merpati! ✨</h2>
-        <p style="font-size: 12px; color: #aaa;">Masuk untuk buat link rahasiamu</p>
+        <p style="font-size: 12px; color: #aaa;">Masuk untuk melihat ramalan harianmu</p>
         <button class="main-btn" onclick="window.handleLogin()">Masuk dengan Google 🚀</button>
     </section>
 
     <div id="main-content" class="content-page">
-        <a href="https://deductpursue.com/isxt18cv5?key=9dc3d672ab267827f9065674f6a3407f" target="_blank" class="premium-card">
-            <span class="premium-tag">Promo Premium ✨</span>
-            <p style="margin: 8px 0 0 0; font-size: 13px; font-weight: bold;">Cek Keberuntungan & Aura Tubuh?</p>
-            <p style="font-size: 10px; margin: 3px 0 0 0; color: #888;">Klik untuk klaim bonus eksklusif hari ini!</p>
-        </a>
-
         <section id="ideal" class="sub-page active">
             <h2>Body Visualizer</h2>
             <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 10px;">
@@ -102,26 +89,25 @@
             <input type="number" id="tinggi" placeholder="Tinggi (cm)">
             <input type="number" id="berat" placeholder="Berat (kg)">
             <button class="main-btn" onclick="window.hitungVisual()">Lihat Hasil</button>
-            
-            <div id="hasilBMI" class="visual-container">
-                <p id="status-teks" style="font-weight:bold; font-size: 18px; color: var(--pink-bold); margin-bottom: 5px;"></p>
-                <div class="body-img-container">
-                    <img id="img-visual" class="body-img" src="" alt="Visualisasi">
-                </div>
-                <p id="bmi-angka" style="font-size: 14px; color: #999; margin-bottom: 10px;"></p>
-                <p id="ukuran-badan" style="font-size:12px; font-weight: 600; color: var(--text); background: #fff5f6; padding: 10px; border-radius: 10px; border: 1px solid var(--pink-soft);"></p>
+            <div id="hasilBMI" style="display:none; margin-top:20px;">
+                <p id="status-teks" style="font-weight:bold; color: var(--pink-bold);"></p>
+                <img id="img-visual" style="width:120px; border-radius:10px; margin:10px 0;">
+                <p id="bmi-angka" style="font-size:12px; color:#999;"></p>
             </div>
         </section>
 
-        <section id="pesan" class="sub-page">
-            <h2>Kotak Rahasia</h2>
-            <div id="link-display" style="font-size:10px; background:#f9f9f9; padding:10px; border-radius:10px; word-break:break-all; border: 1px solid #eee;"></div>
-            <div class="share-grid">
-                <button class="share-btn" style="background:#ff85a2;" onclick="window.copyLink()">📋 Salin</button>
-                <button class="share-btn" style="background:#25D366;" onclick="window.shareWA()">📱 WA</button>
-                <button class="share-btn" style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);" onclick="window.shareIG()">📸 IG</button>
+        <section id="ramalan" class="sub-page">
+            <h2>Ramalan Harian 🔮</h2>
+            <p style="font-size: 11px; color: #888;">Klik tombol di bawah untuk melihat nasibmu hari ini!</p>
+            
+            <div id="card-ramalan" class="fortune-card">
+                <p id="text-ramalan" class="fortune-text">Memuat nasibmu...</p>
+                <div class="fortune-meta">📅 Ramalan Hari Ini</div>
             </div>
-            <div id="list-pesan" style="margin-top:20px; max-height: 300px; overflow-y: auto;"></div>
+
+            <button class="main-btn" onclick="window.acakRamalan()">🔮 Ambil Ramalan Baru</button>
+            
+            <p style="font-size: 10px; margin-top: 15px; color: #bbb;">Bagikan hasil ini ke Story WA/IG kamu!</p>
         </section>
 
         <section id="jodoh" class="sub-page">
@@ -132,14 +118,6 @@
             <h1 id="hasilJodoh" style="color:var(--pink-bold);"></h1>
         </section>
     </div>
-
-    <section id="page-send-msg" class="content-page">
-        <h2>Kirim Pesan ✨</h2>
-        <p style="font-size: 12px;">Pesanmu akan dikirim secara anonim.</p>
-        <textarea id="anon-text" rows="4" placeholder="Tulis rahasia di sini..."></textarea>
-        <button class="main-btn" id="btnSendReal" onclick="window.sendAnonMessage()">Kirim Sekarang 🤫</button>
-        <div id="sentStatus" style="display:none; color: #ff85a2; font-weight: bold; margin-top:15px; background: #fff5f6; padding: 10px; border-radius: 10px;">✅ Pesan Rahasia Terkirim!</div>
-    </section>
 </div>
 
 <div class="footer-name" style="color:#ccc; font-size:10px; margin:20px 0;">merpati digital creative</div>
@@ -147,7 +125,6 @@
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-    import { getFirestore, collection, addDoc, query, where, onSnapshot, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
     const firebaseConfig = {
         apiKey: "AIzaSyBRUMOALHTCiJ83lBc1KaYc0QcsSIfw5ek",
@@ -160,99 +137,102 @@
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
-    const db = getFirestore(app);
     const provider = new GoogleAuthProvider();
 
-    const getTargetID = () => new URLSearchParams(window.location.search).get('to');
+    // DATABASE RAMALAN (50+ Data)
+    const daftarRamalan = [
+        "Keberuntungan besar akan datang kepadamu melalui orang yang baru kamu kenal.",
+        "Hari ini adalah waktu yang tepat untuk mengungkapkan perasaanmu. Go for it!",
+        "Kesehatanmu sedang prima, tapi jangan lupa minum air putih yang banyak ya!",
+        "Ada seseorang dari masa lalu yang sedang merindukan senyumanmu.",
+        "Dompetmu akan segera menebal, ada rezeki tak terduga minggu ini!",
+        "Jangan terlalu keras pada dirimu sendiri, kamu sudah melakukan yang terbaik.",
+        "Hati-hati dengan pengeluaran hari ini, godaan diskon sangat kuat!",
+        "Warna pink atau krem akan membawakanmu aura positif hari ini.",
+        "Seseorang sedang memperhatikanmu secara diam-diam karena kagum.",
+        "Tarik napas dalam, masalah yang kamu hadapi akan selesai dalam 3 hari ke depan.",
+        "Hari ini kamu akan menemukan barang yang sempat hilang.",
+        "Fokus pada pendidikanmu, hasil manis sedang menunggu di depan mata.",
+        "Jangan ragu untuk bilang 'TIDAK' pada hal yang membuatmu tidak nyaman.",
+        "Sesuatu yang kamu impikan sejak lama akan segera terwujud bulan ini.",
+        "Senyummu adalah magnet keberuntunganmu hari ini. Teruslah tersenyum!",
+        "Kamu akan menerima pesan singkat yang membuat jantungmu berdebar.",
+        "Hindari begadang malam ini, energi besok sangat kamu butuhkan.",
+        "Kesabaranmu akan membuahkan hasil yang jauh lebih indah dari bayanganmu.",
+        "Ada perjalanan kecil yang akan menyegarkan pikiranmu dalam waktu dekat.",
+        "Jangan biarkan pendapat orang lain merusak hari indahmu.",
+        "Angka keberuntunganmu hari ini adalah 7 dan 22.",
+        "Hari ini cocok untuk memulai hobi baru atau belajar skill baru.",
+        "Siapkan dirimu, seseorang akan memberikan kejutan kecil sore nanti.",
+        "Aura kamu hari ini sangat bersinar, banyak orang ingin di dekatmu.",
+        "Kurangi asupan gula hari ini agar mood kamu tetap stabil.",
+        "Berhentilah membandingkan hidupmu dengan orang lain di media sosial.",
+        "Kesuksesan besar dimulai dari langkah kecil yang kamu ambil hari ini.",
+        "Alam semesta sedang mendukung rencanamu. Jalani dengan percaya diri!",
+        "Pesan rahasia: Seseorang diam-diam mendoakan kebahagiaanmu setiap malam.",
+        "Jangan lupa luangkan waktu untuk me-time hari ini.",
+        "Kabar baik tentang finansial akan datang sebelum matahari terbenam.",
+        "Persahabatanmu akan semakin erat setelah melewati sedikit salah paham.",
+        "Intuisi kamu sangat kuat hari ini, percayalah pada kata hatimu.",
+        "Masa depanmu cerah, jangan biarkan awan mendung hari ini menghalangi.",
+        "Seseorang ingin meminta maaf padamu tapi dia terlalu malu.",
+        "Gunakan pakaian ternyamanmu hari ini, itu akan menambah rasa percaya diri.",
+        "Keajaiban seringkali datang saat kamu hampir menyerah. Bertahanlah!",
+        "Hari ini kamu akan mendapatkan apresiasi atas kerja kerasmu selama ini.",
+        "Bintangmu sedang berada di posisi terbaik untuk urusan asmara.",
+        "Cobalah untuk lebih terbuka pada perubahan, itu adalah pintu peluang.",
+        "Makan makanan favoritmu hari ini sebagai hadiah untuk dirimu sendiri.",
+        "Seseorang yang kamu anggap biasa saja ternyata punya perasaan khusus.",
+        "Jagalah rahasia temanmu dengan baik jika ingin dipercaya kembali.",
+        "Besok akan menjadi hari yang lebih baik dari hari ini, tetap optimis!",
+        "Jangan takut salah, dari sanalah kamu akan belajar banyak hal hebat.",
+        "Keuanganmu mulai stabil, saatnya menabung untuk impian besarmu.",
+        "Lingkungan baru akan memberimu inspirasi yang luar biasa.",
+        "Berikan pujian pada seseorang hari ini, energi positifnya akan kembali padamu.",
+        "Hari ini adalah hari keberuntungan untuk kamu yang berani mencoba hal baru.",
+        "Tuhan sedang mempersiapkan sesuatu yang jauh lebih baik dari yang kamu minta."
+    ];
 
     window.handleLogin = () => signInWithPopup(auth, provider);
-    window.logout = () => signOut(auth).then(() => { 
-        window.location.href = window.location.origin + window.location.pathname; 
-    });
+    window.logout = () => signOut(auth).then(() => { window.location.reload(); });
 
     window.showSubPage = (id) => {
         document.querySelectorAll('.sub-page').forEach(p => p.classList.remove('active'));
         document.getElementById(id).classList.add('active');
     };
 
+    window.acakRamalan = () => {
+        const card = document.getElementById('card-ramalan');
+        const text = document.getElementById('text-ramalan');
+        card.style.display = 'block';
+        
+        // Animasi acak sebentar
+        text.innerText = "Membaca garis tangan...";
+        setTimeout(() => {
+            const random = daftarRamalan[Math.floor(Math.random() * daftarRamalan.length)];
+            text.innerText = random;
+        }, 800);
+    };
+
     onAuthStateChanged(auth, (user) => {
         document.getElementById('loader').style.display = 'none';
-        const idTujuan = getTargetID();
         document.querySelectorAll('.content-page').forEach(s => s.classList.remove('active'));
 
-        if (idTujuan) {
-            document.getElementById('page-send-msg').classList.add('active');
-        } else if (user) {
+        if (user) {
             document.getElementById('main-content').classList.add('active'); 
             document.getElementById('main-nav').style.display = 'flex';
-            setupUserDashboard(user);
         } else {
             document.getElementById('page-login').classList.add('active');
         }
     });
 
-    function setupUserDashboard(user) {
-        const myLink = window.location.origin + window.location.pathname + "?to=" + user.uid;
-        document.getElementById('link-display').innerText = myLink;
-        
-        const q = query(
-            collection(db, "messages"), 
-            where("receiverID", "==", user.uid), 
-            orderBy("timestamp", "desc")
-        );
-
-        onSnapshot(q, (snapshot) => {
-            let html = ""; 
-            snapshot.forEach(doc => { 
-                html += `<div class="msg-card">${doc.data().text}</div>`; 
-            });
-            document.getElementById('list-pesan').innerHTML = html || "<p style='font-size:12px; color:#aaa;'>Belum ada pesan masuk.</p>";
-        });
-    }
-    
-    window.sendAnonMessage = async () => {
-        const textInput = document.getElementById('anon-text');
-        const btnSend = document.getElementById('btnSendReal');
-        const text = textInput.value.trim();
-        const receiverID = getTargetID();
-
-        if (!text) return alert("Tulis pesanmu dulu!");
-        if (!receiverID) return alert("ID tujuan tidak ditemukan!");
-
-        btnSend.disabled = true;
-        btnSend.innerText = "Mengirim... ✨";
-
-        try {
-            await addDoc(collection(db, "messages"), {
-                receiverID: receiverID,
-                text: text,
-                timestamp: serverTimestamp()
-            });
-
-            textInput.value = "";
-            document.getElementById('sentStatus').style.display = "block";
-            btnSend.innerText = "Kirim Lagi 🤫";
-            
-            setTimeout(() => {
-                document.getElementById('sentStatus').style.display = "none";
-            }, 3000);
-        } catch (e) {
-            console.error("Error:", e);
-            alert("Gagal kirim! Pastikan internet stabil.");
-            btnSend.innerText = "Coba Lagi 🤫";
-        } finally {
-            btnSend.disabled = false;
-        }
-    };
-
     window.hitungVisual = () => {
         const isWanita = document.getElementById('genderWanita').checked;
         const bb = parseFloat(document.getElementById('berat').value);
         const tb = parseFloat(document.getElementById('tinggi').value);
-        if(!bb || !tb) return alert("Isi tinggi dan berat badan dulu!");
+        if(!bb || !tb) return alert("Isi data dulu!");
         const bmi = bb / ((tb/100)**2);
-        const resContainer = document.getElementById('hasilBMI');
-        resContainer.style.display = "block";
+        document.getElementById('hasilBMI').style.display = "block";
         let txt = "", img = "";
         if(bmi < 18.5) { txt = "Kurus"; img = isWanita ? "https://i.postimg.cc/cLLxjTGc/Gemini-Generated-Image-s4dzws4dzws4dzws.png" : "https://i.postimg.cc/3xfvbdVF/Gemini-Generated-Image-e156jze156jze156.png"; }
         else if(bmi < 24.9) { txt = "Ideal ✨"; img = isWanita ? "https://i.postimg.cc/NjHJgvtQ/AVATAR.jpg" : "https://i.postimg.cc/sDD1d3pY/Jose-Luis.jpg"; }
@@ -266,26 +246,10 @@
     window.cekJodoh = () => {
         const n1 = document.getElementById('nama1').value;
         const n2 = document.getElementById('nama2').value;
-        if(!n1 || !n2) return alert("Masukkan kedua nama!");
+        if(!n1 || !n2) return alert("Masukkan nama!");
         document.getElementById('hasilJodoh').innerText = Math.floor(Math.random()*40 + 60) + "% ❤️";
     };
-
-    window.copyLink = () => { 
-        navigator.clipboard.writeText(document.getElementById('link-display').innerText); 
-        alert("Link rahasia sudah disalin!"); 
-    };
-
-    window.shareWA = () => { 
-        window.open("https://wa.me/?text=" + encodeURIComponent("Kirim pesan rahasia ke aku yuk: " + document.getElementById('link-display').innerText)); 
-    };
-
-    window.shareIG = () => {
-        alert("Salin link lalu tempel di bio IG atau Story kamu!");
-        window.copyLink();
-    };
 </script>
-
-<script type="text/javascript" src="https://deductpursue.com/34/83/cc/3483cc01879a0b87f5698fca3d8b6067.js"></script>
 
 </body>
 </html>
