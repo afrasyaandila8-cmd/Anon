@@ -31,7 +31,7 @@
             background: rgba(255,255,255,0.95); 
             backdrop-filter: blur(10px); 
             width: 100%; 
-            display: none; /* Muncul setelah login */
+            display: none; 
             justify-content: space-around; 
             padding: 15px 0; 
             position: sticky; 
@@ -74,7 +74,7 @@
             outline: none; font-size: 14px; transition: 0.3s;
         }
 
-        input:focus { border-color: var(--pink-soft); }
+        input:focus, select:focus { border-color: var(--pink-soft); }
 
         .main-btn { 
             background: linear-gradient(45deg, #ffb6c1, #ff85a2); 
@@ -87,7 +87,6 @@
 
         .main-btn:active { transform: scale(0.98); }
 
-        /* Sub-page management */
         .content-page, .sub-page { display: none; }
         .active { display: block !important; animation: fadeIn 0.5s ease; }
 
@@ -96,7 +95,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Ramalan Card */
         .fortune-card {
             background: linear-gradient(135deg, #ffffff, #fff0f3);
             border: 2px solid var(--pink-soft);
@@ -125,6 +123,14 @@
             animation: spin 1s infinite linear; 
         }
         @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        #img-visual {
+            width: 100%;
+            max-width: 200px;
+            border-radius: 15px;
+            margin: 15px 0;
+            box-shadow: 0 5px 15px rgba(255,133,162,0.3);
+        }
     </style>
 </head>
 <body>
@@ -154,12 +160,18 @@
         
         <section id="ideal" class="sub-page">
             <h2>Body Visualizer</h2>
+            <select id="gender">
+                <option value="" disabled selected>Pilih Gender</option>
+                <option value="laki">Laki-laki ♂️</option>
+                <option value="perempuan">Perempuan ♀️</option>
+            </select>
             <input type="number" id="tinggi" placeholder="Tinggi (cm)">
             <input type="number" id="berat" placeholder="Berat (kg)">
-            <button class="main-btn" id="btn-hitung">Lihat Hasil</button>
+            <button class="main-btn" id="btn-hitung">Lihat Hasil Visual</button>
+            
             <div id="hasilBMI" style="display:none; margin-top:20px;">
                 <p id="status-teks" style="font-weight:bold; color: var(--pink-bold); font-size: 20px;"></p>
-                <img id="img-visual" style="width:120px; border-radius:10px; margin:10px 0;" src="https://via.placeholder.com/150?text=Avatar">
+                <img id="img-visual" src="" alt="Visual Tubuh">
                 <p id="bmi-angka" style="font-size:12px; color:#999;"></p>
             </div>
         </section>
@@ -212,7 +224,7 @@
     const auth = getAuth(app);
     const provider = new GoogleAuthProvider();
 
-    // -- Global Navigation Function --
+    // -- Global Navigation --
     window.showSubPage = (id) => {
         const pages = document.querySelectorAll('.sub-page');
         pages.forEach(p => p.classList.remove('active'));
@@ -234,7 +246,7 @@
             loginPage.classList.remove('active');
             mainContent.classList.add('active');
             nav.style.display = 'flex';
-            showSubPage('ideal'); // Default page
+            showSubPage('ideal');
         } else {
             loginPage.classList.add('active');
             mainContent.classList.remove('active');
@@ -242,38 +254,87 @@
         }
     });
 
-    // -- Features Logic --
-
-    // 1. BMI Visualizer
+    // -- Fitur 1: Body Visualizer (LOGIKA GABUNGAN) --
     document.getElementById('btn-hitung').onclick = () => {
+        const gen = document.getElementById('gender').value;
         const tb = parseFloat(document.getElementById('tinggi').value);
         const bb = parseFloat(document.getElementById('berat').value);
-        if(!tb || !bb) return alert("Lengkapi data dulu manis!");
-        
+
+        if(!gen || !tb || !bb) return alert("Pilih gender dan isi data dulu ya manis!");
+
         const bmi = bb / ((tb/100)**2);
+        const img = document.getElementById('img-visual');
+        const teks = document.getElementById('status-teks');
+        
+        let visualUrl = "";
+        let status = "";
+
+        if (gen === 'laki') {
+            if (bmi < 18.5) {
+                status = "Laki-laki Kurus";
+                visualUrl = "https://i.postimg.cc/3xfvbdVF/Gemini_Generated_Image_e156jze156jze156.png";
+            } else if (bmi < 23) {
+                status = "Laki-laki Ideal";
+                visualUrl = "https://i.postimg.cc/sDD1d3pY/José_Luis.jpg";
+            } else if (bmi < 25) {
+                status = "Laki-laki Berisi";
+                visualUrl = "https://i.postimg.cc/vBhM36ST/Gemini_Generated_Image_lzw8rdlzw8rdlzw8.png";
+            } else if (bmi < 30) {
+                status = "Laki-laki Gemuk";
+                visualUrl = "https://i.postimg.cc/0NqsvCLF/Gemini_Generated_Image_rz8uxerz8uxerz8u.png";
+            } else {
+                status = "Laki-laki Obesitas";
+                visualUrl = "https://i.postimg.cc/HLmfRkMj/Gemini_Generated_Image_6anme86anme86anm.png";
+            }
+        } else {
+            if (bmi < 18.5) {
+                status = "Perempuan Kurus";
+                visualUrl = "https://i.postimg.cc/cLLxjTGc/Gemini_Generated_Image_s4dzws4dzws4dzws.png";
+            } else if (bmi < 23) {
+                status = "Perempuan Ideal";
+                visualUrl = "https://i.postimg.cc/NjHJgvtQ/AVATAR.jpg";
+            } else if (bmi < 25) {
+                status = "Perempuan Berisi";
+                visualUrl = "https://i.postimg.cc/TYmNxXfJ/Gemini_Generated_Image_fud001fud001fud0.png";
+            } else if (bmi < 30) {
+                status = "Perempuan Gemuk";
+                visualUrl = "https://i.postimg.cc/xTbymG45/Gemini_Generated_Image_ji0k0yji0k0yji0k.png";
+            } else {
+                status = "Perempuan Obesitas";
+                visualUrl = "https://i.postimg.cc/tTKdvY1h/Gemini_Generated_Image_45m3ya45m3ya45m3.png";
+            }
+        }
+
         document.getElementById('hasilBMI').style.display = "block";
-        document.getElementById('status-teks').innerText = bmi < 23 ? "Body Ideal ✨" : "Body Berisi ✨";
+        teks.innerText = status + " ✨";
+        img.src = visualUrl;
         document.getElementById('bmi-angka').innerText = `Skor BMI: ${bmi.toFixed(1)}`;
-        document.getElementById('img-visual').src = "https://i.postimg.cc/NjHJgvtQ/AVATAR.jpg";
     };
 
-    // 2. Ramalan & Oracle
+    // -- Fitur 2: Ramalan --
     const daftarRamalan = [
         "Keberuntungan besar akan datang melalui pesan singkat hari ini.",
         "Seseorang sedang merindukan senyummu di sana.",
         "Waktunya belanja! Ada rezeki tak terduga dalam 24 jam ke depan.",
         "Jangan ragu, keputusan yang kamu ambil sudah tepat.",
-        "Aura kamu hari ini sangat positif, manfaatkan untuk hal baik!"
+        "Aura kamu hari ini sangat positif, manfaatkan untuk hal baik!",
+        "Barang yang kamu cari selama ini akan mendadak muncul di depan mata.",
+        "Seseorang dari masa lalu akan muncul membawa kabar baik.",
+        "Pesan singkat yang kamu tunggu akan masuk sebelum matahari terbenam.",
+        "Jadilah pendengar, karena seseorang akan membagikan rahasia penting padamu.",
+        "Ada yang diam-diam menjadikanmu inspirasi dalam diamnya.",
+        "Ide gila yang muncul di kepalamu hari ini sebenarnya adalah ide berlian.",
+        "Kamu lebih kuat dari tantangan yang sedang kamu hadapi saat ini.",
+        "Lihatlah ke belakangmu... ada kesempatan yang hampir terlewat!",
+        "Besok akan menjadi hari yang lebih luar biasa lagi, bersiaplah!"
     ];
 
     document.getElementById('btn-ramal').onclick = () => {
         const card = document.getElementById('card-ramalan');
         const text = document.getElementById('text-ramalan');
         const share = document.getElementById('share-area');
-        
         card.style.display = 'block';
         text.innerText = "Membaca garis tanganmu...";
-        
         setTimeout(() => {
             const hasil = daftarRamalan[Math.floor(Math.random() * daftarRamalan.length)];
             text.innerText = hasil;
@@ -285,26 +346,22 @@
     document.getElementById('btn-tanya').onclick = () => {
         const q = document.getElementById('pertanyaan').value;
         if(!q) return alert("Tanya dulu dong...");
-        
-        const jawaban = ["Tentu saja!", "Sepertinya tidak sekarang", "Bisa jadi, usahakan lagi!", "Sudah takdirmu!", "Coba tanya lagi besok manis."];
+        const jawaban = ["Tentu saja!", "Mungkin nanti", "Bisa jadi", "Coba lagi!", "Mungkin tidak", "Tidak", "Aku rasa tidak", "Tetap tidak", "Mungkin suatu hari nanti"];
         const hasil = jawaban[Math.floor(Math.random() * jawaban.length)];
-        
         const voice = document.getElementById('voice-text');
         voice.innerText = "Membisikkan jawaban...";
-
         const speech = new SpeechSynthesisUtterance(hasil);
         speech.lang = 'id-ID';
-        speech.pitch = 1.2;
         speech.onend = () => voice.innerText = "Jawaban: " + hasil;
         window.speechSynthesis.speak(speech);
     };
 
-    // 3. Love Meter
+    // -- Fitur 3: Love Meter --
     document.getElementById('btn-jodoh').onclick = () => {
         const n1 = document.getElementById('nama1').value;
         const n2 = document.getElementById('nama2').value;
         if(!n1 || !n2) return alert("Masukkan kedua nama!");
-        const skor = Math.floor(Math.random() * 41) + 60; // 60-100%
+        const skor = Math.floor(Math.random() * 41) + 60;
         document.getElementById('hasilJodoh').innerText = `${skor}% ❤️`;
     };
 </script>
