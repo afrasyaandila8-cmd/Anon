@@ -1,248 +1,475 @@
 <!DOCTYPE html>
+
 <html lang="id">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
     <title>FunTools - Merpati Premium ✨</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style>
+
         :root { 
+
             --pink-soft: #ffdee9; 
+
             --pink-bold: #ff85a2; 
+
             --cream: #fff5f5; 
+
             --text: #7d5a5a; 
+
             --wa-green: #25D366; 
+
             --ig-gradient: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+
         }
+
+
 
         body { 
+
             font-family: 'Poppins', sans-serif; 
+
             background: var(--cream); 
+
             margin: 0; 
+
             color: var(--text); 
+
             display: flex; 
+
             flex-direction: column; 
+
             align-items: center; 
+
             min-height: 100vh;
-        }
-        
-        nav { 
-            background: rgba(255,255,255,0.95); 
-            backdrop-filter: blur(10px); 
-            width: 100%; 
-            display: none; 
-            justify-content: space-around; 
-            padding: 15px 0; 
-            position: sticky; 
-            top: 0; 
-            z-index: 100; 
-            border-bottom: 1px solid var(--pink-soft); 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+
         }
 
-        nav button { 
-            background: none; 
-            border: none; 
-            font-weight: 600; 
-            font-size: 12px; 
-            cursor: pointer; 
-            color: var(--text); 
-            transition: 0.3s;
+        
+
+        nav { 
+
+            background: rgba(255,255,255,0.95); 
+
+            backdrop-filter: blur(10px); 
+
+            width: 100%; 
+
+            display: none; 
+
+            justify-content: space-around; 
+
+            padding: 15px 0; 
+
+            position: sticky; 
+
+            top: 0; 
+
+            z-index: 100; 
+
+            border-bottom: 1px solid var(--pink-soft); 
+
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+
         }
+
+
+
+        nav button { 
+
+            background: none; 
+
+            border: none; 
+
+            font-weight: 600; 
+
+            font-size: 12px; 
+
+            cursor: pointer; 
+
+            color: var(--text); 
+
+            transition: 0.3s;
+
+        }
+
+
 
         nav button:hover { color: var(--pink-bold); }
 
+
+
         .container { 
+
             background: white; 
+
             width: 92%; 
+
             max-width: 400px; 
+
             margin: 20px auto; 
+
             padding: 25px; 
+
             border-radius: 30px; 
+
             box-shadow: 0 10px 25px rgba(255,182,193,0.2); 
+
             text-align: center; 
+
             box-sizing: border-box; 
+
         }
+
+
 
         h2 { font-family: 'Dancing Script', cursive; color: var(--pink-bold); font-size: 32px; margin-bottom: 20px; }
 
+
+
         input, select, textarea { 
+
             width: 100%; padding: 12px; margin: 8px 0; 
+
             border: 2px solid #fff5f6; border-radius: 12px; 
+
             font-family: 'Poppins', sans-serif; box-sizing: border-box; 
+
             outline: none; font-size: 14px; transition: 0.3s;
+
         }
+
+
 
         .main-btn { 
+
             background: linear-gradient(45deg, #ffb6c1, #ff85a2); 
+
             color: white; border: none; padding: 14px; 
+
             border-radius: 15px; cursor: pointer; width: 100%; 
+
             font-weight: bold; margin-top: 10px; 
+
             display: flex; align-items: center; justify-content: center; gap: 8px;
+
             transition: transform 0.2s, box-shadow 0.2s;
+
         }
+
+
 
         .mic-btn {
+
             background: #ff85a2;
+
             width: 70px;
+
             height: 70px;
+
             border-radius: 50%;
+
             margin: 20px auto;
+
             font-size: 24px;
+
             box-shadow: 0 4px 15px rgba(255,133,162,0.4);
+
         }
+
         
+
         .mic-active {
+
             animation: pulse 1.5s infinite;
+
             background: #ff4d6d;
+
         }
+
+
 
         @keyframes pulse {
+
             0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 77, 109, 0.7); }
+
             70% { transform: scale(1.1); box-shadow: 0 0 0 15px rgba(255, 77, 109, 0); }
+
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 77, 109, 0); }
+
         }
+
+
 
         .content-page, .sub-page { display: none; }
+
         .active { display: block !important; animation: fadeIn 0.5s ease; }
 
+
+
         @keyframes fadeIn {
+
             from { opacity: 0; transform: translateY(10px); }
+
             to { opacity: 1; transform: translateY(0); }
+
         }
+
+
 
         .fortune-card {
+
             background: linear-gradient(135deg, #ffffff, #fff0f3);
+
             border: 2px solid var(--pink-soft);
+
             padding: 20px;
+
             border-radius: 20px;
+
             margin: 20px 0;
+
             display: none;
+
         }
+
+
 
         .share-group { display: none; justify-content: center; gap: 10px; margin-top: 15px; }
+
         .btn-share { 
+
             padding: 10px 15px; border-radius: 10px; color: white; 
+
             text-decoration: none; font-size: 12px; display: flex; align-items: center; gap: 5px; 
+
         }
+
         .btn-wa { background-color: var(--wa-green); }
+
         .btn-ig { background: var(--ig-gradient); }
 
+
+
         #loader { 
+
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+
             background: white; z-index: 2000; display: flex; 
+
             justify-content: center; align-items: center; flex-direction: column; 
+
         }
+
         .spinner { 
+
             width: 40px; height: 40px; border: 4px solid var(--pink-soft); 
+
             border-top: 4px solid var(--pink-bold); border-radius: 50%; 
+
             animation: spin 1s infinite linear; 
+
         }
+
         @keyframes spin { 100% { transform: rotate(360deg); } }
 
+
+
         #img-visual { width: 100%; max-width: 200px; border-radius: 15px; margin: 15px 0; box-shadow: 0 5px 15px rgba(255,133,162,0.3); }
+
         
+
         .ad-container { margin-top: 20px; border-radius: 10px; overflow: hidden; }
+
     </style>
+
 </head>
+
 <body>
 
+
+
 <div id="loader">
+
     <div class="spinner"></div>
+
     <p style="margin-top:10px; color: var(--pink-bold);">Tunggu sebentar ya...</p>
+
 </div>
 
+
+
 <nav id="main-nav">
+
     <button onclick="showSubPage('ideal')">📏 Tubuh</button>
+
     <button onclick="showSubPage('ramalan')">🔮 Ramalan</button>
+
     <button onclick="showSubPage('jodoh')">❤️ Jodoh</button>
+
     <button id="logout-btn">🚪 Keluar</button>
+
 </nav>
 
+
+
 <div class="container">
+
     <section id="page-login" class="content-page">
+
         <h2>Halo, Merpati! ✨</h2>
+
         <p>Silahkan masuk untuk menikmati fitur premium kami.</p>
+
         <button class="main-btn" id="login-btn">
+
             <i class="fab fa-google"></i> Masuk dengan Google
+
         </button>
+
     </section>
 
+
+
     <div id="main-content" class="content-page">
+
         
+
         <section id="ideal" class="sub-page">
+
             <h2>Body Visualizer</h2>
+
             <select id="gender">
+
                 <option value="" disabled selected>Pilih Gender</option>
+
                 <option value="laki">Laki-laki ♂️</option>
+
                 <option value="perempuan">Perempuan ♀️</option>
+
             </select>
+
             <input type="number" id="tinggi" placeholder="Tinggi (cm)">
+
             <input type="number" id="berat" placeholder="Berat (kg)">
+
             <button class="main-btn" id="btn-hitung">
+
     <i class="fas fa-eye"></i> Lihat Hasil Visual & Postur Tubuhmu 👀
+
 </button>
+
             <div id="hasilBMI" style="display:none; margin-top:20px;">
+
                 <p id="status-teks" style="font-weight:bold; color: var(--pink-bold); font-size: 20px;"></p>
+
                 <img id="img-visual" src="" alt="Visual Tubuh">
+
                 <p id="bmi-angka" style="font-size:12px; color:#999;"></p>
+
             </div>
+
         </section>
+
+
 
         <section id="ramalan" class="sub-page">
-            <h2>Ramalan Harian 🔮</h2>
-            
-            <select id="kategori-ramalan">
-                <option value="umum">Umum ✨</option>
-                <option value="asmara">Asmara ❤️</option>
-                <option value="karir">Karir & Studi 📚</option>
-                <option value="keuangan">Keuangan 💸</option>
-            </select>
+    <h2>Ramalan Harian 🔮</h2>
+    
+    <select id="kategori-ramalan">
+        <option value="umum">Umum ✨</option>
+        <option value="asmara">Asmara ❤️</option>
+        <option value="karir">Karir & Studi 📚</option>
+        <option value="keuangan">Keuangan 💸</option>
+    </select>
 
-            <div id="card-ramalan" class="fortune-card">
-                <p id="text-ramalan">Pilih kategori dan ambil ramalanmu...</p>
-            </div>
+    <div id="card-ramalan" class="fortune-card">
+        <p id="text-ramalan">Pilih kategori dan ambil ramalanmu...</p>
+    </div>
+    
+    <button class="main-btn" id="btn-ramal">🔮 Ambil Ramalan Baru</button>
+    
+    <div id="share-area" class="share-group">
+        <a id="share-wa" class="btn-share btn-wa" target="_blank"><i class="fab fa-whatsapp"></i> Bagikan ke WA</a>
+    </div>
             
-            <button class="main-btn" id="btn-ramal">🔮 Ambil Ramalan Baru</button>
-            
-            <div id="share-area" class="share-group">
-                <a id="share-wa" class="btn-share btn-wa" target="_blank"><i class="fab fa-whatsapp"></i> Bagikan ke WA</a>
-            </div>
-                    
-            <div style="margin-top: 30px; border-top: 1px dashed var(--pink-soft); padding-top: 20px;">
-                <h3 style="font-size: 16px;">Tanya Merpati Kerang Ajaib 🐚</h3>
-                <p style="font-size: 11px; color: #999;">Gunakan awalan <b>"Apakah..."</b></p>
-                <p id="recorded-text" style="font-size: 13px; color: #888; min-height: 20px;">Klik mic dan bicaralah...</p>
-                <button class="main-btn mic-btn" id="btn-mic"><i class="fas fa-microphone"></i></button>
-                <p id="voice-text" style="font-style:italic; color: var(--pink-bold); font-weight: bold; margin-top: 10px;"></p>
-            </div>
-        </section>
+    <div style="margin-top: 30px; border-top: 1px dashed var(--pink-soft); padding-top: 20px;">
+        <h3 style="font-size: 16px;">Tanya Merpati Kerang Ajaib 🐚</h3>
+        <p style="font-size: 11px; color: #999;">Gunakan awalan <b>"Apakah..."</b></p>
+        
+        <p id="recorded-text" style="font-size: 13px; color: #888; min-height: 20px;">Klik mic dan bicaralah...</p>
+        
+        <button class="main-btn mic-btn" id="btn-mic">
+            <i class="fas fa-microphone"></i>
+        </button>
+        
+        <p id="voice-text" style="font-style:italic; color: var(--pink-bold); margin-top: 10px; font-weight: bold;"></p>
+    </div>
+</section>
+
 
         <section id="jodoh" class="sub-page">
+
             <h2>Love Meter ❤️</h2>
+
             <input type="text" id="nama1" placeholder="Nama Kamu">
+
             <input type="text" id="nama2" placeholder="Nama Pasangan">
+
             <button class="main-btn" id="btn-jodoh">Cek Kecocokan</button>
+
             <h1 id="hasilJodoh" style="color:var(--pink-bold); margin-top: 20px;"></h1>
+
         </section>
 
-    </div> <div class="ad-container">
-        <script type="text/javascript">
-            atOptions = {
-                'key' : '0d9622e9e779ea401d2f05433e1b0674',
-                'format' : 'iframe',
-                'height' : 250,
-                'width' : 300,
-                'params' : {}
-            };
-        </script>
-        <script type="text/javascript" src="https://deductpursue.com/0d9622e9e779ea401d2f0543e1b0674/invoke.js"></script>
+
+
     </div>
-</div> ```
-    
+
+
+
+    <div class="ad-container">
+
+        <script type="text/javascript">
+
+            atOptions = {
+
+                'key' : '0d9622e9e779ea401d2f05433e1b0674',
+
+                'format' : 'iframe',
+
+                'height' : 250,
+
+                'width' : 300,
+
+                'params' : {}
+
+            };
+
+        </script>
+
+        <script type="text/javascript" src="https://deductpursue.com/0d9622e9e779ea401d2f0543e1b0674/invoke.js"></script>
+
+    </div>
+
+</div>
+
+
+
 <script src="https://deductpursue.com/34/83/cc/3483cc01879a0b87f5698fca3d8b6067.js"></script>
+
 <script src="https://deductpursue.com/b5/06/21/b5062164c8e2ce615f79e8b920276e0b.js"></script>
+
+
 
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -259,6 +486,7 @@
     const auth = getAuth(app);
     const provider = new GoogleAuthProvider();
 
+    // Navigasi Halaman
     window.showSubPage = (id) => {
         const pages = document.querySelectorAll('.sub-page');
         pages.forEach(p => p.classList.remove('active'));
@@ -266,6 +494,7 @@
         if(target) target.classList.add('active');
     };
 
+    // Auth Events
     document.getElementById('login-btn').onclick = () => signInWithPopup(auth, provider);
     document.getElementById('logout-btn').onclick = () => signOut(auth);
 
@@ -287,75 +516,54 @@
         }
     });
 
-    // Perbaikan pada Logika Hitung BMI
-document.getElementById('btn-hitung').onclick = () => {
-    const gen = document.getElementById('gender').value;
-    const tbInput = document.getElementById('tinggi').value;
-    const bbInput = document.getElementById('berat').value;
+    // --- FITUR 1: Body Visualizer ---
+    document.getElementById('btn-hitung').onclick = () => {
+        const gen = document.getElementById('gender').value;
+        const tb = parseFloat(document.getElementById('tinggi').value);
+        const bb = parseFloat(document.getElementById('berat').value);
 
-    if(!gen || !tbInput || !bbInput) {
-        alert("Isi semua data dulu ya, Merpati! ✨");
-        return;
-    }
+        if(!gen || !tb || !bb) {
+            return alert("Isi data dulu ya, cantik/ganteng! ✨");
+        }
 
-    const tb = parseFloat(tbInput);
-    const bb = parseFloat(bbInput);
+        // Jalankan Iklan
+        window.open("https://deductpursue.com/isxt18cv5?key=9dc3d672ab267827f9065674f6a3407f", "_blank");
 
-    // Eksekusi Iklan (Smartlink)
-    window.open("https://deductpursue.com/isxt18cv5?key=9dc3d672ab267827f9065674f6a3407f", "_blank");
+        const bmi = bb / ((tb/100)**2);
+        const img = document.getElementById('img-visual');
+        const teks = document.getElementById('status-teks');
+        let visualUrl = ""; 
+        let status = "";
+        
+        if (gen === 'laki') {
+            if (bmi < 18.5) { status = "Laki-laki Kurus"; visualUrl = "https://i.postimg.cc/3xfvbdVF/Gemini_Generated_Image_e156jze156jze156.png"; }
+            else if (bmi < 23) { status = "Laki-laki Ideal"; visualUrl = "https://i.postimg.cc/sDD1d3pY/José_Luis.jpg"; }
+            else if (bmi < 25) { status = "Laki-laki Berisi"; visualUrl = "https://i.postimg.cc/vBhM36ST/Gemini_Generated_Image_lzw8rdlzw8rdlzw8.png"; }
+            else { status = "Laki-laki Gemuk"; visualUrl = "https://i.postimg.cc/0NqsvCLF/Gemini_Generated_Image_rz8uxerz8uxerz8u.png"; }
+        } else {
+            if (bmi < 18.5) { status = "Perempuan Kurus"; visualUrl = "https://i.postimg.cc/cLLxjTGc/Gemini_Generated_Image_s4dzws4dzws4dzws.png"; }
+            else if (bmi < 23) { status = "Perempuan Ideal"; visualUrl = "https://i.postimg.cc/NjHJgvtQ/AVATAR.jpg"; }
+            else { status = "Perempuan Berisi"; visualUrl = "https://i.postimg.cc/TYmNxXfJ/Gemini_Generated_Image_fud001fud001fud0.png"; }
+        }
 
-    const bmi = bb / ((tb/100)**2);
-    const img = document.getElementById('img-visual');
-    const teks = document.getElementById('status-teks');
-    let visualUrl = ""; 
-    let status = "";
-    
-    if (gen === 'laki') {
-        if (bmi < 18.5) { 
-            status = "Laki-laki Kurus"; 
-            visualUrl = "https://i.postimg.cc/3xfvbdVF/Gemini_Generated_Image_e156jze156jze156.png"; 
-        }
-        else if (bmi < 23) { 
-            status = "Laki-laki Ideal"; 
-            visualUrl = "https://i.postimg.cc/sDD1d3pY/José_Luis.jpg"; 
-        }
-        else if (bmi < 25) { 
-            status = "Laki-laki Berisi"; 
-            visualUrl = "https://i.postimg.cc/vBhM36ST/Gemini_Generated_Image_lzw8rdlzw8rdlzw8.png"; 
-        }
-        else { 
-            status = "Laki-laki Gemuk"; 
-            visualUrl = "https://i.postimg.cc/0NqsvCLF/Gemini_Generated_Image_rz8uxerz8uxerz8u.png"; 
-        }
-    } else {
-        if (bmi < 18.5) { 
-            status = "Perempuan Kurus"; 
-            visualUrl = "https://i.postimg.cc/cLLxjTGc/Gemini_Generated_Image_s4dzws4dzws4dzws.png"; 
-        }
-        else if (bmi < 23) { 
-            status = "Perempuan Ideal"; 
-            visualUrl = "https://i.postimg.cc/NjHJgvtQ/AVATAR.jpg"; 
-        }
-        else { 
-            status = "Perempuan Berisi"; 
-            visualUrl = "https://i.postimg.cc/TYmNxXfJ/Gemini_Generated_Image_fud001fud001fud0.png"; 
-        }
-    }
+        document.getElementById('hasilBMI').style.display = "block";
+        teks.innerText = status + " ✨";
+        img.src = visualUrl;
+        document.getElementById('bmi-angka').innerText = `Skor BMI kamu: ${bmi.toFixed(1)}`;
+    };
 
-    document.getElementById('hasilBMI').style.display = "block";
-    teks.innerText = status + " ✨";
-    img.src = visualUrl;
-    document.getElementById('bmi-angka').innerText = `Skor BMI: ${bmi.toFixed(1)}`;
-};
-
-    // Fitur 2: Ramalan & Tanya Mic
+    // --- FITUR 2: Ramalan & Mic ---
     const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
     recognition.lang = 'id-ID';
 
     document.getElementById('btn-mic').onclick = () => {
-        recognition.start();
-        document.getElementById('btn-mic').classList.add('mic-active');
-        document.getElementById('recorded-text').innerText = "Mendengarkan...";
+        try {
+            recognition.start();
+            document.getElementById('btn-mic').classList.add('mic-active');
+            document.getElementById('recorded-text').innerText = "Mendengarkan suaramu...";
+        } catch (e) {
+            alert("Mic sudah aktif atau tidak didukung di browser ini.");
+        }
     };
 
     recognition.onresult = (event) => {
@@ -363,113 +571,70 @@ document.getElementById('btn-hitung').onclick = () => {
         document.getElementById('recorded-text').innerText = `Kamu bertanya: "${result}"`;
         document.getElementById('btn-mic').classList.remove('mic-active');
         
-        // Logika Jawaban
-        const jawaban = ["Tentu saja!", "Mungkin nanti", "Bisa jadi", "Coba lagi!", "Mungkin tidak", "Tidak", "Aku rasa tidak", "Coba tanya lagi", "Mungkin suatu hari nanti"];
+        const jawaban = ["Tentu saja!", "Mungkin nanti", "Bisa jadi", "Coba lagi!", "Mungkin tidak", "Sangat tidak mungkin", "Aku rasa iya", "Coba tanya lagi nanti", "Tanyakan pada hatimu"];
         const hasil = jawaban[Math.floor(Math.random() * jawaban.length)];
         
         const voice = document.getElementById('voice-text');
-        voice.innerText = "Merpati menjawab...";
+        voice.innerText = "Merpati sedang berpikir...";
 
-        // Suara ala Magic Conch (Spongebob)
         const speech = new SpeechSynthesisUtterance(hasil);
         speech.lang = 'id-ID';
-        speech.pitch = 1.5; // Lebih tinggi/cempreng
-        speech.rate = 0.8;  // Lebih lambat/datar
+        speech.pitch = 1.4; 
+        speech.rate = 0.9;
         
-        speech.onend = () => voice.innerText = "Jawaban: " + hasil;
+        speech.onend = () => voice.innerText = "Jawaban Merpati: " + hasil;
         window.speechSynthesis.speak(speech);
     };
 
-    document.getElementById('btn-ramal').onclick = () => {
-    const kategori = document.getElementById('kategori-ramalan').value;
-    const text = document.getElementById('text-ramalan');
-    const card = document.getElementById('card-ramalan');
-    
-    card.style.display = 'block';
-    text.innerHTML = "<i class='fas fa-spinner fa-spin'></i> Membaca garis tanganmu...";
-
-    const databaseRamalan = {
-        umum: [
-            "Hari ini adalah waktu yang tepat untuk memulai hal baru.",
-            "Jangan biarkan komentar orang lain merusak mood-mu hari ini.",
-            "Sesuatu yang kamu cari akan segera datang menemuimu.",
-            "Kesehatanmu sedang prima, manfaatkan untuk produktif!",
-            "Minggu ini fokusmu lagi tajam-tajamnya. Apa yang sempat tertunda kemarin, bakal nemu jalan keluarnya hari ini. Manfaatin momentum ini sebelum rasa malas datang lagi.",
-            "Ada pengeluaran tak terduga buat hal kecil, tapi tenang saja, bakal ada aliran rezeki dari arah yang nggak kamu sangka-sangka sebagai penggantinya.",
-            "Siapkan diri buat denger kabar yang menyenangkan lewat pesan singkat atau email. Sesuatu yang sudah lama kamu tunggu akhirnya mulai ada titik terang.",
-            "Tubuhmu sudah kasih kode kalau dia butuh jeda. Jangan dipaksa terus, tidur lebih awal malam ini bakal bikin mood kamu besok jauh lebih stabil.",
-            "Seseorang dari masa lalu mungkin bakal muncul lagi. Ambil pelajarannya, tapi nggak perlu bawa perasaan yang sudah lewat ke masa sekarang.",
-            "Hari ini duniamu terasa lebih ringan. Gunakan energi ini buat beresin hal-hal yang biasanya bikin kamu stres. Semuanya bakal terasa lebih gampang dikerjain.",
-            "Berhenti bandingin progres kamu sama orang lain di media sosial. Setiap orang punya garis start dan finish yang beda-beda. Fokus ke jalanmu sendiri.",
-            "Bakal ada sedikit drama atau kendala teknis hari ini, tapi jangan terpancing emosi. Masalahnya sepele dan bakal beres kalau kamu tetap tenang.",
-            "Rencana yang kamu susun pelan-pelan mulai kelihatan bentuknya. Tetap konsisten, hasil yang besar butuh proses yang nggak sebentar."
-        ],
-        asmara: [
-            "Seseorang yang diam-diam memperhatikanmu akan segera muncul.",
-            "Komunikasi adalah kunci, bicarakan apa yang mengganjal di hati.",
-            "Si dia sedang merindukan senyumanmu saat ini.",
-            "Jangan terjebak masa lalu, ada hati baru yang lebih tulus menanti.",
-            "Bakal ada yang bikin salting di tempat yang nggak terduga.",
-            "Kejujuran dalam dua minggu ke depan bakal nentuin kalian lanjut atau berhenti di sini.",
-            "Kalau hubungan ini lebih sering bikin nangis daripada ketawa, berarti intuisimu udah tau jawabannya.",
-            "Bakal ada titik jenuh yang bikin kamu sadar kalau waktu kamu terlalu berharga buat nunggu kepastian yang nggak kunjung datang.",
-            "Minggu ini saatnya merapikan hati. Seseorang dari masa lalu mungkin muncul hanya untuk menguji apakah kamu benar-benar sudah pulih atau belum.",
-            "Hatimu ingin bertahan, tapi logikamu sudah melihat tanda peringatan. Bulan ini akan memberi jawaban apakah dia pelabuhan atau sekadar dermaga singgah.",
-            "Berhenti mencari yang sempurna di luar sana sebelum kamu merasa cukup dengan dirimu sendiri. Frekuensi yang sama akan bertemu di waktu yang tepat.",
-            "Jika hubungan ini lebih banyak menguras energi daripada memberi ketenangan, percayalah pada perasaan pertamamu. Semesta tidak pernah salah memberi tanda.",
-            "Nggak ada lomba untuk siapa yang paling cepat move on. Pelan-pelan saja, hobi baru akan jadi penyelamat mood kamu minggu ini.",
-            "Jangan kaget kalau ada orang baru yang masuk ke hidupmu lewat perantara teman lama. Buka pintunya sedikit, siapa tahu itu yang kamu cari."
-       ],
-        karir: [
-            "Usaha kerasmu selama ini mulai dilirik oleh atasan/guru.",
-            "Akan ada tawaran menarik, jangan ragu untuk mengambil peluang.",
-            "Fokuslah pada satu tugas dulu agar hasilnya maksimal.",
-            "Relasi baru akan membantumu mencapai target bulan ini.",
-            "Energi minggu ini lagi bagus buat kerja sama. Jangan sungkan buat diskusi atau tanya pendapat orang lain, hasilnya bakal jauh lebih maksimal dibanding jalan sendiri.",
-            "Bakal ada sedikit kendala kecil atau drama di tempat kerja, tapi jangan terpancing emosi. Masalahnya sepele dan bakal beres kalau kamu tetap tenang.",
-            "Kalau perasaanmu bilang "tunggu sebentar" sebelum ambil keputusan besar, mending ikuti dulu. Intuisi kamu lagi kuat banget buat ngehindarin langkah yang salah.",
-            "Jangan meremehkan progres kecil yang kamu buat hari ini. Gunung yang tinggi pun didaki mulai dari satu langkah pertama. Tetap konsisten!",
-            "Kalau hatimu bilang "coba saja dulu", itu tandanya kamu harus ambil risiko itu. Jangan biarkan rasa takut gagal menghalangi potensi besarmu.",
-            "Kamu lagi semangat-semangatnya, tapi jangan lupa istirahat. Ambisi yang besar butuh raga yang sehat buat mewujudkannya.",
-            "Kalau ada rencana yang meleset, itu bukan akhir. Anggap saja itu cara semesta buat ngasih tau kalau ada jalan yang lebih aman buat kamu lewati.",
-            "Waktunya upgrade diri. Buku yang kamu baca atau course yang kamu ambil bulan ini bakal jadi senjata ampuh buat karirmu ke depan.",
-            "Kasih selamat ke diri sendiri karena sudah bertahan sejauh ini. Kamu sudah melewati banyak hal berat, dan masa depanmu sangat layak buat diperjuangin.",
-            "Coba tulis lagi targetmu di kertas. Visualisasi yang jelas bakal bantu otakmu buat nemu cara-cara kreatif buat mencapainya lebih cepat."
-        ],
-        keuangan: [
-            "Rezeki tak terduga akan datang dari arah yang tidak disangka.",
-            "Waktunya menabung, hindari belanja barang yang tidak perlu.",
-            "Investasi kecilmu akan mulai membuahkan hasil.",
-            "Dompetmu akan tersenyum di akhir pekan ini!",
-            "Ada tanda-tanda pemasukan tambahan dari arah yang nggak disangka-sangka. Mungkin hasil kerja keras lama yang baru cair atau sekadar keberuntungan kecil.",
-            "Kalau ada rezeki lebih, jangan langsung dihabiskan. Simpan sedikit buat jaga-jaga, karena bakal ada pengeluaran tak terduga di akhir bulan.",
-            "Ada ide kreatif yang bisa jadi sumber penghasilan sampingan. Jangan cuma disimpan di kepala, coba eksekusi tipis-tipis minggu ini.",
-            "Jangan lupa sisihkan sedikit buat berbagi. Kadang dengan memberi, jalan rezeki kamu justru dibukakan lewat cara yang lebih ajaib.",
-            "Jangan tergiur sama tawaran keuntungan instan yang kedengarannya terlalu muluk. Lebih baik pelan tapi pasti daripada cepat tapi berisiko."
-        ]
+    recognition.onerror = () => {
+        document.getElementById('btn-mic').classList.remove('mic-active');
+        document.getElementById('recorded-text').innerText = "Duh, suaranya nggak kedengeran...";
     };
 
-    setTimeout(() => {
-        const opsi = databaseRamalan[kategori];
-        const hasil = opsi[Math.floor(Math.random() * opsi.length)];
+    document.getElementById('btn-ramal').onclick = () => {
+        const kategori = document.getElementById('kategori-ramalan').value;
+        const text = document.getElementById('text-ramalan');
+        const card = document.getElementById('card-ramalan');
+        const shareArea = document.getElementById('share-area');
         
-        text.innerText = hasil;
-        
-        // Update Link Share WhatsApp
-        const shareText = encodeURIComponent(`🔮 Ramalan ${kategori} aku hari ini: "${hasil}" \n\nCek ramalanmu juga di Merpati Premium! ✨`);
-        document.getElementById('share-area').style.display = 'flex';
-        document.getElementById('share-wa').href = `https://api.whatsapp.com/send?text=${shareText}`;
-    }, 1200);
-};
+        card.style.display = 'block';
+        shareArea.style.display = 'none'; // Sembunyikan share saat loading
+        text.innerHTML = "<i class='fas fa-spinner fa-spin'></i> Membaca takdirmu...";
 
-    // Fitur 3: Love Meter
+        const databaseRamalan = {
+            umum: ["Hari ini adalah waktu yang tepat untuk memulai hal baru.", "Jangan biarkan komentar orang lain merusak mood-mu.", "Sesuatu yang kamu cari akan segera datang.", "Kesehatanmu sedang prima!", "Fokusmu lagi tajam-tajamnya hari ini.", "Akan ada kejutan kecil di sore hari."],
+            asmara: ["Si dia sedang merindukan senyumanmu.", "Komunikasi adalah kunci hubungan yang sehat.", "Jangan terjebak masa lalu, ada hati baru menanti.", "Bakal ada yang bikin kamu salting hari ini!", "Seseorang dari masa lalu mungkin menyapa kembali."],
+            karir: ["Usaha kerasmu mulai dilirik atasan/guru.", "Akan ada tawaran menarik, jangan ragu!", "Fokus pada satu tugas dulu agar maksimal.", "Relasi baru akan membantumu mencapai target."],
+            keuangan: ["Rezeki tak terduga akan datang segera.", "Waktunya menabung untuk impian besarmu.", "Dompetmu akan tersenyum di akhir pekan!", "Hindari belanja impulsif hari ini."]
+        };
+
+        setTimeout(() => {
+            const opsi = databaseRamalan[kategori];
+            const hasil = opsi[Math.floor(Math.random() * opsi.length)];
+            text.innerText = hasil;
+            
+            const shareText = encodeURIComponent(`🔮 Ramalan ${kategori} aku: "${hasil}" \n\nCek punyamu di FunTools Merpati! ✨`);
+            shareArea.style.display = 'flex';
+            document.getElementById('share-wa').href = `https://api.whatsapp.com/send?text=${shareText}`;
+        }, 1500);
+    };
+
+    // --- FITUR 3: Love Meter ---
     document.getElementById('btn-jodoh').onclick = () => {
         const n1 = document.getElementById('nama1').value;
         const n2 = document.getElementById('nama2').value;
-        if(!n1 || !n2) return alert("Masukkan nama!");
-        document.getElementById('hasilJodoh').innerText = `${Math.floor(Math.random() * 41) + 60}% ❤️`;
+        if(!n1 || !n2) return alert("Isi kedua nama dulu ya!");
+        
+        const persen = Math.floor(Math.random() * 41) + 60;
+        let pesan = "";
+        
+        if(persen > 90) pesan = "Wah, cocok banget! Buruan nikah! 💍";
+        else if(persen > 80) pesan = "Chemistry kalian kuat banget! ❤️";
+        else pesan = "Lanjutkan, hubungan kalian manis kok! ✨";
+
+        document.getElementById('hasilJodoh').innerHTML = `${persen}% ❤️ <br><span style="font-size:14px; font-weight:normal;">${pesan}</span>`;
     };
 </script>
 
-</body>
-</html>
+<body>
+<html>
