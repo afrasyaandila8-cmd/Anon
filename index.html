@@ -180,7 +180,9 @@
             </select>
             <input type="number" id="tinggi" placeholder="Tinggi (cm)">
             <input type="number" id="berat" placeholder="Berat (kg)">
-            <button class="main-btn" id="btn-hitung">Lihat Hasil Visual</button>
+            <button class="main-btn" id="btn-hitung">
+    <i class="fas fa-eye"></i> Lihat Hasil Visual & Postur Tubuhmu 👀
+</button>
             <div id="hasilBMI" style="display:none; margin-top:20px;">
                 <p id="status-teks" style="font-weight:bold; color: var(--pink-bold); font-size: 20px;"></p>
                 <img id="img-visual" src="" alt="Visual Tubuh">
@@ -294,6 +296,13 @@
         const tb = parseFloat(document.getElementById('tinggi').value);
         const bb = parseFloat(document.getElementById('berat').value);
         if(!gen || !tb || !bb) return alert("Isi data dulu ya!");
+    }
+
+        // --- EKSEKUSI SMARTLINK ---
+    // Membuka iklan di tab baru agar penghasilan masuk
+    window.open("https://deductpursue.com/isxt18cv5?key=9dc3d672ab267827f9065674f6a3407f", "_blank");
+
+        // --- LOGIKA VISUALISASI ---
         const bmi = bb / ((tb/100)**2);
         const img = document.getElementById('img-visual');
         const teks = document.getElementById('status-teks');
