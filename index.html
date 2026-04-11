@@ -2,629 +2,80 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="monetag" content="a3428fbcb998374cd98cf44caa5cfc07">
-    <title>Merpati Premium | The Divine Experience</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kumpulan Video Viral Terbaru</title>
     <style>
-        :root {
-            --pink-soft: #fff0f6;
-            --pink-pastel: #ffd6e7;
-            --pink-main: #ff8ec2;
-            --pink-deep: #ff4d9e;
-            --gold: #d4af37;
-            --glass: rgba(255, 255, 255, 0.85);
-            --shadow-lux: 0 20px 40px rgba(255, 77, 158, 0.2);
-        }
-
-        * {
-            margin: 0; padding: 0; box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
-
         body {
-            background: radial-gradient(circle at top right, var(--pink-soft), #ffffff, var(--pink-pastel));
-            background-attachment: fixed;
-            color: #3a2a33;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* Animated Floating Sparkles */
-        .sparkle {
-            position: fixed;
-            z-index: 0;
-            pointer-events: none;
-            animation: floatSparkle 15s infinite linear;
-            filter: drop-shadow(0 0 5px var(--pink-main));
-        }
-
-        @keyframes floatSparkle {
-            0% { transform: translateY(105vh) scale(0.5); opacity: 0; }
-            50% { opacity: 0.8; }
-            100% { transform: translateY(-10vh) scale(1.2) rotate(360deg); opacity: 0; }
-        }
-
-        .container {
-            max-width: 480px;
-            margin: 0 auto;
-            padding: 25px 20px;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* HEADER */
-        .header-brand {
+            background-color: #000080; /* Navy Blue */
+            color: #ffffff; /* Tulisan Putih */
+            font-family: Arial, sans-serif;
             text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .header-brand h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 38px;
-            background: linear-gradient(45deg, var(--pink-deep), var(--gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
-        }
-
-        /* NAVIGATION LUXURY */
-        .menu {
-            display: flex;
-            justify-content: space-around;
-            padding: 10px;
-            background: var(--glass);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border-radius: 40px;
-            margin-bottom: 30px;
-            box-shadow: var(--shadow-lux);
-            border: 1px solid rgba(255,255,255,0.7);
-            position: sticky;
-            top: 15px;
-        }
-
-        .menu-btn {
-            font-size: 22px;
-            width: 54px; height: 54px;
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .menu-btn.active {
-            background: linear-gradient(135deg, var(--pink-main), var(--pink-deep));
-            color: white;
-            transform: scale(1.15) translateY(-5px);
-            box-shadow: 0 10px 20px rgba(255, 77, 158, 0.4);
-        }
-
-        /* CARD STYLING */
-        .feature {
-            display: none;
-            background: var(--glass);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border-radius: 45px;
-            padding: 35px 25px;
-            box-shadow: var(--shadow-lux);
-            border: 1px solid rgba(255,255,255,0.8);
-            margin-bottom: 30px;
-        }
-
-        .feature.active { display: block; animation: reveal 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
-
-        @keyframes reveal {
-            from { opacity: 0; transform: translateY(40px) scale(0.95); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
-        h2 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 32px;
-            text-align: center;
-            margin-bottom: 25px;
-            color: var(--pink-deep);
-        }
-
-        /* INPUT & BUTTONS */
-        input, .popup-btn {
-            width: 100%;
-            padding: 18px;
-            margin: 12px 0;
-            border-radius: 25px;
-            border: 2px solid transparent;
-            background: white;
-            font-size: 15px;
-            transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-        }
-
-        input:focus {
-            border-color: var(--pink-pastel);
-            outline: none;
-            box-shadow: 0 0 15px var(--pink-pastel);
-        }
-
-        .main-btn {
-            background: linear-gradient(135deg, var(--pink-deep), #ff7eb3);
-            color: white;
+            margin: 0;
             padding: 20px;
-            border-radius: 25px;
-            border: none;
-            font-weight: 700;
-            font-size: 16px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            box-shadow: 0 12px 25px rgba(255, 77, 158, 0.3);
-            cursor: pointer;
-            transition: 0.4s;
-            position: relative;
-            overflow: hidden;
-            width: 100%;
         }
-
-        .main-btn::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: 0.5s;
-            animation: sweep 4s infinite;
+        .container {
+            max-width: 600px;
+            margin: auto;
         }
-
-        @keyframes sweep {
-            0% { left: -100%; }
-            50% { left: 100%; }
-            100% { left: 100%; }
-        }
-
-        .main-btn:active { transform: scale(0.95); }
-
-        .ad-icon {
-            background: white;
-            min-width: 60px; height: 60px;
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 20px; font-size: 22px; cursor: pointer;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.05);
-            border: 1px solid var(--pink-soft);
-        }
-
-        /* RESULTS */
-        .result {
-            margin-top: 30px;
-            padding: 30px;
-            background: white;
-            border-radius: 35px;
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(255,142,194,0.1);
-            border: 1px solid var(--pink-soft);
-        }
-
-        .result img {
-            width: 100%;
-            max-width: 250px;
-            border-radius: 30px;
+        .btn-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
             margin: 20px 0;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+            padding: 15px;
+            border: 2px solid #ffffff;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
         }
-
-        /* POPUP LUXURY */
-        .popup {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(58, 42, 51, 0.4); backdrop-filter: blur(15px); z-index: 1000;
-            align-items: center; justify-content: center;
+        .ad-slot {
+            margin: 20px 0;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            min-height: 250px;
         }
-
-        .popup-content {
-            background: white;
-            padding: 40px 30px; border-radius: 45px; width: 85%; max-width: 400px;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.2);
-            transform: scale(0.8); animation: popUp 0.4s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        @keyframes popUp { to { transform: scale(1); } }
-
-        /* MIC BUTTON */
-        .mic-btn {
-            width: 100px; height: 100px; border-radius: 50%;
-            margin: 30px auto; display: flex; align-items: center; justify-content: center;
-            font-size: 40px; background: white; border: none;
-            box-shadow: 0 20px 40px rgba(255, 77, 158, 0.2);
-            cursor: pointer; transition: 0.5s;
-        }
-
-        .listening {
-            background: var(--pink-deep); color: white;
-            animation: pulse 1.2s infinite ease-in-out;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 77, 158, 0.7); }
-            70% { transform: scale(1.15); box-shadow: 0 0 0 25px rgba(255, 77, 158, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 77, 158, 0); }
-        }
-
-        .footer-ad {
-            margin-top: 30px;
-            border-radius: 30px;
-            overflow: hidden;
-            box-shadow: var(--shadow-lux);
-            background: white;
+        h2 {
+            margin-top: 40px;
+            border-top: 1px solid #ffffff;
+            padding-top: 20px;
         }
     </style>
 </head>
 <body>
 
-<script>
-    const icons = ['✨','💖','🌸','🦢','💎','🎀'];
-    for(let i=0; i<15; i++) {
-        let s = document.createElement('div');
-        s.className = 'sparkle';
-        s.innerText = icons[Math.floor(Math.random()*icons.length)];
-        s.style.left = Math.random()*100 + 'vw';
-        s.style.animationDuration = (10 + Math.random()*10) + 's';
-        s.style.animationDelay = Math.random()*5 + 's';
-        s.style.fontSize = (15 + Math.random()*20) + 'px';
-        s.style.opacity = Math.random();
-        document.body.appendChild(s);
-    }
-</script>
+    <div class="container">
+        <a href="https://deductpursue.com/isxt18cv5?key=9dc3d672ab267827f9065674f6a3407f" class="btn-link">
+            Apakah kamu berusia 18+? Klik untuk melanjutkan
+        </a>
 
-<div class="container">
-    <div class="header-brand">
-        <h1>Merpati Premium</h1>
-    </div>
-
-    <div class="menu">
-        <div class="menu-btn active" onclick="showFeature('timbangan', this)">⚖️</div>
-        <div class="menu-btn" onclick="showFeature('ramalan', this)">🔮</div>
-        <div class="menu-btn" onclick="showFeature('kecocokan', this)">💑</div>
-        <div class="menu-btn" onclick="showFeature('merpati', this)">🕊️</div>
-        <div class="menu-btn" onclick="showFeature('info', this)">ℹ️</div>
-    </div>
-
-    <div id="timbangan" class="feature active">
-        <h2>Body Visualizer</h2>
-        <button class="popup-btn" onclick="openPopup('genderPopup')" id="genderBtnText">Pilih Identitas ✨</button>
-        <input type="number" id="tinggi" placeholder="Tinggi Badan (cm)">
-        <input type="number" id="berat" placeholder="Berat Badan (kg)">
-        <div style="display: flex; gap: 15px; align-items: center; margin-top: 15px;">
-            <button class="main-btn" onclick="hitungBMI()">Analisis Profil</button>
-            <span class="ad-icon" onclick="openAd(event)">🚺</span>
-        </div>
-        <div id="bmi-result" class="result" style="display:none;">
-            <p style="font-size: 12px; text-transform: uppercase; color: var(--pink-main); letter-spacing: 2px;">Your Profile Result</p>
-            <h3 id="bmi-status" style="font-size: 26px; margin: 10px 0; font-family: 'Dancing Script', cursive;"></h3>
-            <img id="bmi-img" src="">
-            <p id="bmi-value" style="font-weight: 600; font-size: 18px; color: var(--pink-deep);"></p>
-        </div>
-    </div>
-
-    <div id="ramalan" class="feature">
-        <h2>Fate & Destiny</h2>
-        <button class="popup-btn" onclick="openPopup('ramalanPopup')" id="ramalanBtnText">Pilih Fokus Takdir</button>
-        <div style="display: flex; gap: 15px; align-items: center; margin-top: 15px;">
-            <button class="main-btn" onclick="lihatRamalan()">Buka Rahasia Semesta</button>
-            <span class="ad-icon" onclick="openAd(event)">💎</span>
-        </div>
-        <div id="ramalan-result" class="result" style="display:none;">
-            <div id="ramalan-card" style="padding:15px; border: 1px solid var(--pink-soft); border-radius: 20px; background: #fffafc;">
-                <h3 id="ramalan-judul" style="font-family: 'Dancing Script', cursive; font-size: 28px; color: var(--gold);"></h3>
-                <p id="ramalan-isi" style="font-size: 18px; line-height: 1.6; font-style: italic; color: #555;"></p>
-            </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px;">
-                <button class="main-btn" style="font-size: 12px; padding: 15px; background: #25D366;" onclick="shareWA()">WhatsApp</button>
-                <button class="main-btn" style="font-size: 12px; padding: 15px; background: #333;" onclick="shareIG()">Save Image</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="kecocokan" class="feature">
-        <h2>Love Harmony</h2>
-        <input type="text" id="nama1" placeholder="Nama Anda">
-        <input type="text" id="nama2" placeholder="Nama Si Dia">
-        <button class="main-btn" onclick="hitungCocok()">Calculate Chemistry</button>
-
-        <div id="cocok-result" class="result" style="display:none;">
-            <h3 id="persen-cocok" style="font-size: 55px; color: var(--pink-deep); font-family: 'Dancing Script', cursive;"></h3>
-            <p id="kata-cocok" style="font-size: 18px; margin-top: 10px;"></p>
+        <div class="ad-slot">
+            <script src="https://deductpursue.com/34/83/cc/3483cc01879a0b87f5698fca3d8b6067.js"></script>
         </div>
 
-        <div style="margin-top: 45px; border-top: 1px dashed var(--pink-pastel); padding-top: 30px;">
-            <h2 style="font-size: 24px;">Wedding Prediction 💍</h2>
-            <input type="text" id="nama-nikah" placeholder="Tulis Nama Anda">
-            <button class="main-btn" style="background: #3a2a33;" onclick="kapanNikah()">Kapan Saya Menikah?</button>
-            <div id="nikah-result" class="result" style="display:none; font-family: 'Dancing Script', cursive; font-size: 22px;"></div>
+        <a href="https://deductpursue.com/isxt18cv5?key=9dc3d672ab267827f9065674f6a3407f" class="btn-link">
+            Kumpulan Vidio Viral Lainnya
+        </a>
+
+        <div class="ad-slot">
+            <script>
+                atOptions = {
+                    'key' : '0d9622e9e779ea401d2f05433e1b0674',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                };
+            </script>
+            <script src="https://deductpursue.com/0d9622e9e779ea401d2f05433e1b0674/invoke.js"></script>
         </div>
-    </div>
 
-    <div id="merpati" class="feature">
-        <h2>Oracle Merpati</h2>
-        <p style="text-align: center; opacity: 0.6; font-size: 14px; margin-bottom: 20px;">Berbisiklah pada Merpati, awali dengan "Apakah..."</p>
-        <button class="mic-btn" id="micBtn" onclick="startListening()">🕊️</button>
-        <p id="pertanyaan" style="text-align: center; font-weight: 600; min-height: 30px; color: var(--pink-deep);"></p>
-        <div id="jawaban-merpati" class="result" style="display:none; font-size: 24px; font-weight: 800; background: linear-gradient(135deg, var(--pink-deep), #ff7eb3); color: white; border: none; font-family: 'Dancing Script', cursive;"></div>
-    </div>
-
-    <div id="info" class="feature">
-        <h2>Aura Authentique</h2>
-        <p style="line-height: 2; text-align: center; font-size: 15px; color: #666;">
-            Selamat datang di portal hiburan eksklusif <b>Merpati Premium</b>.<br><br>
-            Aplikasi ini diciptakan untuk memberikan kilauan kegembiraan dalam hari-hari Anda. Semua hasil didasarkan pada algoritma spiritual modern yang acak dan menyenangkan. ✨<br><br>
-            <i>Designed with Love - Premium V3.0</i>
-        </p>
-        <div class="result" style="cursor: pointer; background: linear-gradient(135deg, var(--pink-soft), #fff);" onclick="openAd(event)">
-            👑 Akses VIP & Koleksi Tersembunyi
+        <div class="ad-slot">
+            <script async="async" data-cfasync="false" src="https://deductpursue.com/fbffb4771c2d97dea17ecc5378bee6a5/invoke.js"></script>
+            <div id="container-fbffb4771c2d97dea17ecc5378bee6a5"></div>
         </div>
+
+        <script src="https://deductpursue.com/b5/06/21/b5062164c8e2ce615f79e8b920276e0b.js"></script>
     </div>
-
-    <div class="footer-ad">
-
-<div id="genderPopup" class="popup">
-    <div class="popup-content">
-        <h2 style="font-size: 28px;">Identity</h2>
-        <button class="popup-btn" style="background: #f0f7ff;" onclick="setGender('pria')">Gentleman 👨</button>
-        <button class="popup-btn" style="background: #fff0f5;" onclick="setGender('wanita')">Lady 👩</button>
-    </div>
-</div>
-
-<div id="ramalanPopup" class="popup">
-    <div class="popup-content">
-        <h2 style="font-size: 28px;">Pilih Takdir</h2>
-        <button class="popup-btn" onclick="setRamalan('asmara')">Romansa 💖</button>
-        <button class="popup-btn" onclick="setRamalan('keuangan')">Kemakmuran 💰</button>
-        <button class="popup-btn" onclick="setRamalan('karir')">Kejayaan 💼</button>
-    </div>
-</div>
-
-<script>
-    let gender = '';
-    let jenisRamalan = '';
-    const adLink = 'https://deductpursue.com/isxt18cv5?key=9dc3d672ab267827f9065674f6a3407f';
-
-    function openAd(e) { e.stopPropagation(); window.open(adLink, '_blank'); }
-
-    function showFeature(id, btn) {
-        document.querySelectorAll('.feature').forEach(f => f.classList.remove('active'));
-        document.querySelectorAll('.menu-btn').forEach(b => b.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
-        btn.classList.add('active');
-        window.scrollTo({top: 0, behavior: 'smooth'});
-    }
-
-    function openPopup(id) { document.getElementById(id).style.display = 'flex'; }
-    function closePopup(id) { document.getElementById(id).style.display = 'none'; }
-
-    function setGender(g) {
-        gender = g;
-        document.getElementById('genderBtnText').innerText = g === 'pria' ? 'Gentleman 👨' : 'Lady 👩';
-        closePopup('genderPopup');
-    }
-
-    function setRamalan(j) {
-        jenisRamalan = j;
-        document.getElementById('ramalanBtnText').innerText = 'Destiny: ' + j.toUpperCase();
-        closePopup('ramalanPopup');
-    }
-
-    const images = {
-        pria: {
-            kurus: 'https://i.postimg.cc/3xfvbdVF/Gemini_Generated_Image_e156jze156jze156.png',
-            ideal: 'https://i.postimg.cc/sDD1d3pY/José_Luis.jpg',
-            gemuk: 'https://i.postimg.cc/0NqsvCLF/Gemini_Generated_Image_rz8uxerz8uxerz8u.png',
-            obesitas: 'https://i.postimg.cc/HLmfRkMj/Gemini_Generated_Image_6anme86anme86anm.png'
-        },
-        wanita: {
-            kurus: 'https://i.postimg.cc/cLLxjTGc/Gemini_Generated_Image_s4dzws4dzws4dzws.png',
-            ideal: 'https://i.postimg.cc/NjHJgvtQ/AVATAR.jpg',
-            gemuk: 'https://i.postimg.cc/xTbymG45/Gemini_Generated_Image_ji0k0yji0k0yji0k.png',
-            obesitas: 'https://i.postimg.cc/tTKdvY1h/Gemini_Generated_Image_45m3ya45m3ya45m3.png'
-        }
-    };
-
-    function hitungBMI() {
-        if(!gender) return openPopup('genderPopup');
-        const t = parseFloat(document.getElementById('tinggi').value)/100;
-        const b = parseFloat(document.getElementById('berat').value);
-        if(!t || !b) return alert('Silakan lengkapi data tubuh Anda.');
-
-        const bmi = b/(t*t);
-        let status, kategori;
-        if(bmi < 18.5) { status = 'Elegant Slim'; kategori = 'kurus'; }
-        else if(bmi < 25) { status = 'Perfectly Ideal'; kategori = 'ideal'; }
-        else if(bmi < 30) { status = 'Charming Curves'; kategori = 'gemuk'; }
-        else { status = 'Luxurious Size'; kategori = 'obesitas'; }
-
-        document.getElementById('bmi-status').innerText = status;
-        document.getElementById('bmi-value').innerText = `BMI Score: ${bmi.toFixed(1)}`;
-        document.getElementById('bmi-img').src = images[gender][kategori];
-        document.getElementById('bmi-result').style.display = 'block';
-    }
-
-    const ramalanData = {
-        asmara: 
-[
-"Hari ini si dia sedang memikirkanmu terus. Siap-siap dapet kejutan manis!",
-        "Komunikasi adalah kunci. Cobalah untuk lebih terbuka malam ini.",
-        "Seseorang dari masa lalu mungkin akan menghubungimu kembali. Pertimbangkan baik-baik.",
-        "Jomblo? Hari ini ada potensi bertemu seseorang yang 'klik' di tempat tak terduga.",
-        "Seseorang yang diam-diam memperhatikanmu akan segera muncul.",
-        "Komunikasi adalah kunci, bicarakan apa yang mengganjal di hati.",
-        "Si dia sedang merindukan senyumanmu saat ini.",
-        "Jangan terjebak masa lalu, ada hati baru yang lebih tulus menanti.",
-        "Bakal ada yang bikin salting di tempat yang nggak terduga.",
-        "Kejujuran dalam dua minggu ke depan bakal nentuin kalian lanjut atau berhenti di sini.",
-        "Kalau hubungan ini lebih sering bikin nangis daripada ketawa, berarti intuisimu udah tau jawabannya.",
-        "Bakal ada titik jenuh yang bikin kamu sadar kalau waktu kamu terlalu berharga buat nunggu kepastian yang nggak kunjung datang.",
-        "Minggu ini saatnya merapikan hati. Seseorang dari masa lalu mungkin muncul hanya untuk menguji apakah kamu benar-benar sudah pulih atau belum.",
-        "Hatimu ingin bertahan, tapi logikamu sudah melihat tanda peringatan. Bulan ini akan memberi jawaban apakah dia pelabuhan atau sekadar dermaga singgah.",
-        "Berhenti mencari yang sempurna di luar sana sebelum kamu merasa cukup dengan dirimu sendiri. Frekuensi yang sama akan bertemu di waktu yang tepat.",
-        "Jika hubungan ini lebih banyak menguras energi daripada memberi ketenangan, percayalah pada perasaan pertamamu. Semesta tidak pernah salah memberi tanda.",
-        "Nggak ada lomba untuk siapa yang paling cepat move on. Pelan-pelan saja, hobi baru akan jadi penyelamat mood kamu minggu ini.",
-        "Jangan kaget kalau ada orang baru yang masuk ke hidupmu lewat perantara teman lama. Buka pintunya sedikit, siapa tahu itu yang kamu cari."],
-        keuangan: 
-[
-"Rezeki nomplok sedang menuju kearahmu. Gunakan dengan bijak!",
-        "Hindari pengeluaran impulsif hari ini, dompetmu butuh istirahat.",
-        "Waktu yang baik untuk merencanakan investasi jangka panjang.",
-        "Ada sedikit pengeluaran tak terduga, tapi jangan khawatir, semua akan terkendali.",
-        "Rezeki tak terduga akan datang dari arah yang tidak disangka.",
-        "Waktunya menabung, hindari belanja barang yang tidak perlu.",
-        "Investasi kecilmu akan mulai membuahkan hasil.",
-        "Dompetmu akan tersenyum di akhir pekan ini!",
-        "Ada tanda-tanda pemasukan tambahan dari arah yang nggak disangka-sangka. Mungkin hasil kerja keras lama yang baru cair atau sekadar keberuntungan kecil.",
-        "Kalau ada rezeki lebih, jangan langsung dihabiskan. Simpan sedikit buat jaga-jaga, karena bakal ada pengeluaran tak terduga di akhir bulan.",
-        "Ada ide kreatif yang bisa jadi sumber penghasilan sampingan. Jangan cuma disimpan di kepala, coba eksekusi tipis-tipis minggu ini.",
-        "Jangan lupa sisihkan sedikit buat berbagi. Kadang dengan memberi, jalan rezeki kamu justru dibukakan lewat cara yang lebih ajaib.",
-        "Jangan tergiur sama tawaran keuntungan instan yang kedengarannya terlalu muluk. Lebih baik pelan tapi pasti daripada cepat tapi berisiko."],
-        karir: 
-[
-"Kerja kerasmu mulai dilirik atasan. Pertahankan performamu!",
-        "Rekan kerja mungkin butuh bantuanmu. Jadilah tim player yang baik.",
-        "Jangan takut untuk mengutarakan ide cemerlangmu di rapat besok.",
-        "Peluang karir baru mungkin terbuka. Update CV kamu.",
-        "Usaha kerasmu selama ini mulai dilirik oleh atasan/guru.",
-        "Akan ada tawaran menarik, jangan ragu untuk mengambil peluang.",
-        "Fokuslah pada satu tugas dulu agar hasilnya maksimal.",
-        "Relasi baru akan membantumu mencapai target bulan ini.",
-        "Energi minggu ini lagi bagus buat kerja sama. Jangan sungkan buat diskusi atau tanya pendapat orang lain, hasilnya bakal jauh lebih maksimal dibanding jalan sendiri.",
-        "Bakal ada sedikit kendala kecil atau drama di tempat kerja, tapi jangan terpancing emosi. Masalahnya sepele dan bakal beres kalau kamu tetap tenang.",
-        "Kalau perasaanmu bilang 'tunggu sebentar' sebelum ambil keputusan besar, mending ikuti dulu. Intuisi kamu lagi kuat banget buat ngehindarin langkah yang salah.",
-        "Jangan meremehkan progres kecil yang kamu buat hari ini. Gunung yang tinggi pun didaki mulai dari satu langkah pertama. Tetap konsisten!",
-        "Kalau hatimu bilang 'coba saja dulu', itu tandanya kamu harus ambil risiko itu. Jangan biarkan rasa takut gagal menghalangi potensi besarmu.",
-        "Kamu lagi semangat-semangatnya, tapi jangan lupa istirahat. Ambisi yang besar butuh raga yang sehat buat mewujudkannya.",
-        "Kalau ada rencana yang meleset, itu bukan akhir. Anggap saja itu cara semesta buat ngasih tau kalau ada jalan yang lebih aman buat kamu lewati.",
-        "Waktunya upgrade diri. Buku yang kamu baca atau course yang kamu ambil bulan ini bakal jadi senjata ampuh buat karirmu ke depan.",
-        "Kasih selamat ke diri sendiri karena sudah bertahan sejauh ini. Kamu sudah melewati banyak hal berat, dan masa depanmu sangat layak buat diperjuangin.",
-        "Coba tulis lagi targetmu di kertas. Visualisasi yang jelas bakal bantu otakmu buat nemu cara-cara kreatif buat mencapainya lebih cepat."]
-    };
-
-    function lihatRamalan() {
-        if(!jenisRamalan) return openPopup('ramalanPopup');
-        const isi = ramalanData[jenisRamalan][Math.floor(Math.random()*ramalanData[jenisRamalan].length)];
-        document.getElementById('ramalan-judul').innerText = 'Divine ' + jenisRamalan;
-        document.getElementById('ramalan-isi').innerText = `"${isi}"`;
-        document.getElementById('ramalan-result').style.display = 'block';
-    }
-
-    function shareWA() {
-        const text = document.getElementById('ramalan-isi').innerText;
-        window.open(`https://wa.me/?text=${encodeURIComponent('Ramalan Exclusive-ku hari ini: ' + text)}`);
-    }
-
-    function shareIG() {
-        const card = document.getElementById('ramalan-card');
-        html2canvas(card, {scale: 3, backgroundColor: '#ffffff'}).then(canvas => {
-            const link = document.createElement('a');
-            link.download = 'Merpati-Divine-Fate.png';
-            link.href = canvas.toDataURL();
-            link.click();
-        });
-    }
-
-    function hitungCocok() {
-        if(!document.getElementById('nama1').value || !document.getElementById('nama2').value) return alert('Lengkapi nama pasangan.');
-        const persen = Math.floor(Math.random()*40) + 60;
-        document.getElementById('persen-cocok').innerText = persen + '%';
-        document.getElementById('kata-cocok').innerText = persen > 85 ? 'Soulmate Alignment: Perfect 💖' : 'Deep Connection Detected 💕';
-        document.getElementById('cocok-result').style.display = 'block';
-    }
-
-    function kapanNikah() {
-        const jawaban = [
-  // Format Tanggal Spesifik (Random untuk User)
-  "12 Desember 2026, siapkan tabunganmu dari sekarang!",
-  "17 Agustus 2027, tepat saat perayaan besar melanda.",
-  "20 Mei 2028, di bawah langit musim semi yang cerah.",
-  "01 Januari 2027, awal tahun yang baru untuk lembaran baru.",
-  "14 Februari 2029, pas banget di hari kasih sayang.",
-  "28 Oktober 2026, saat sumpah setia diucapkan.",
-  "09 September 2027, angka cantik untuk hari yang cantik.",
-  
-  // Jawaban Estetik/Puitis
-  "Saat mentari musim semi bersinar terang di tahun depan.",
-  "Tahun depan dengan pesta yang mewah dan tak terlupakan.",
-  "Ketika hatimu sudah benar-benar siap di akhir tahun ini.",
-  "Dalam waktu dekat, mulailah menabung untuk hari besarmu!",
-  "Saat bulan purnama menyinari cintamu di bulan Juni mendatang.",
-  
-  // Jawaban Lucu & Sinis (Tetap ada Unsur Waktu)
-  "32 Februari 2027, kalau tanggalnya beneran ada ya!",
-  "30 tahun lagi, itu juga kalau kamu berhenti pilih-pilih.",
-  "Bulan depan tanggal 32, jam 25:00 WIB, jangan telat!",
-  "Tahun 2099, pas kita semua sudah pindah ke planet Mars.",
-  "Hari kiamat kurang 2 hari, baru deh kamu dapet jodoh.",
-  
-  // Jawaban Malas
-  "Tahun depan mungkin, kalau gak malas nyarinya.",
-  "Tahun gajah. Dah lah, mager jawabnya.",
-  "Besok. Eh gak jadi, lusa aja biar agak lamaan.",
-  "Gak tau, tanya aja sama kalender tahun depan.",
-  "Tahun kapan kek, terserah kamu aja."
-];
-        document.getElementById('nikah-result').innerText = jawaban[Math.floor(Math.random()*jawaban.length)];
-        document.getElementById('nikah-result').style.display = 'block';
-    }
-
-    function startListening() {
-        const btn = document.getElementById('micBtn');
-        btn.classList.add('listening');
-        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-        recognition.lang = 'id-ID';
-        recognition.start();
-        recognition.onresult = function(e) {
-            document.getElementById('pertanyaan').innerText = '"' + e.results[0][0].transcript + '"';
-            const jwb = 
-[// --- JAWABAN POSITIF (ANGGUN) ---
-            "Sepertinya alam semesta setuju denganmu, Darling. ✨",
-            "Tentu saja, Dear. Itu sudah tertulis di antara bintang-bintang.",
-            "Anggap saja iya, tapi jangan terlalu berisik merayakannya.",
-            "Kilauan di matamu bilang iya, dan aku pun setuju.",
-            "Oh, jelas sekali. Tak perlu ditanyakan lagi.",
-
-            // --- JAWABAN NEGATIF (CUEK/DINGIN) ---
-            "Sama sekali tidak. Cobalah untuk lebih realistis.",
-            "Tidak, Sayang. Jangan memaksakan takdir yang tidak ada.",
-            "Mimpi yang indah, tapi jawabannya tetap tidak.",
-            "Simpan pertanyaan itu untuk dirimu sendiri, jawabannya tidak.",
-            "Jangan berharap terlalu tinggi, nanti jatuh. Jawabannya tidak.",
-
-            // --- JAWABAN NETRAL/BINGUNG (ELEGAN TAPI MALAS) ---
-            "Mungkin saja. Tapi jujur, aku sedang malas menerawang.",
-            "Tanya lagi nanti setelah aku selesai merapikan buluku.",
-            "Bisa iya, bisa tidak. Hidup memang penuh misteri, bukan?",
-            "Coba tanyakan pada hatimu, aku sedang ingin tenang.",
-            "Suaranya kurang jelas, tapi intuisiku bilang: coba lagi nanti.",
-            "Bintang-bintang sedang redup, aku tak bisa melihat apa pun.",
-
-            // --- JAWABAN KHAS KEONG AJAIB (VERSI PASTEL) ---
-            "Coba tanya lagi.",
-            "Tidak satu pun.",
-            "Duduk dan jangan lakukan apa-apa. ✨",
-            "Ikuti saja alurnya, tak perlu banyak tanya.",
-            "Mungkin suatu hari nanti, jika kamu beruntung."];
-            const hasil = jwb[Math.floor(Math.random()*jwb.length)];
-            document.getElementById('jawaban-merpati').innerText = hasil;
-            document.getElementById('jawaban-merpati').style.display = 'block';
-            
-            const ucap = new SpeechSynthesisUtterance(hasil);
-            ucap.lang = 'id-ID';
-            speechSynthesis.speak(ucap);
-        }
-        recognition.onend = () => btn.classList.remove('listening');
-    }
-
-    window.onclick = function(e) {
-        if(e.target.classList.contains('popup')) e.target.style.display = 'none';
-    }
-</script>
 
 </body>
 </html>
