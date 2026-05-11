@@ -3,95 +3,301 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kumpulan Video Viral Terbaru</title>
+    <title>My Study Planner</title>
     <style>
+        :root {
+            --bg-color: #fdf6f6;
+            --accent-color: #ffd1dc; /* Pink Pastel */
+            --text-color: #5d5d5d;
+            --card-bg: #ffffff;
+        }
+
         body {
-            /* Background gelap charcoal dengan sedikit sentuhan hangat */
-            background-color: #1a1a1a; 
-            color: #e0e0e0; 
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             margin: 0;
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
+
         .container {
             max-width: 600px;
-            margin: auto;
+            width: 100%;
         }
-        .btn-link {
-            /* Warna Gold untuk teks dan border */
-            color: #d4af37; 
-            text-decoration: none;
-            font-weight: bold;
-            display: block;
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: var(--accent-color);
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .section {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+        }
+
+        h2 { color: #ff8fa3; border-bottom: 2px solid var(--accent-color); padding-bottom: 5px; }
+
+        .schedule-item { margin-bottom: 15px; }
+        .time-tag { font-weight: bold; color: #ffb7c5; font-size: 0.9em; text-transform: uppercase; }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ffe4e9; padding: 10px; text-align: left; }
+        th { background: #fff5f7; }
+        input { width: 90%; border: 1px solid #ddd; padding: 5px; border-radius: 5px; }
+
+        /* Flashcard Styles */
+        .flashcard-area {
+            perspective: 1000px;
+            height: 150px;
             margin: 20px 0;
-            padding: 15px;
-            border: 2px solid #d4af37;
-            border-radius: 12px;
-            background-color: rgba(212, 175, 55, 0.05);
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            cursor: pointer;
         }
-        .btn-link:hover {
-            /* Efek saat kursor menempel */
-            background-color: #d4af37;
-            color: #1a1a1a;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+
+        .flashcard-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            background: #fff5f7;
+            border: 2px dashed #ffd1dc;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
         }
-        .ad-slot {
-            margin: 25px 0;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 10px;
-            min-height: 250px;
-            border: 1px dashed rgba(212, 175, 55, 0.2);
+
+        .btn {
+            background: #ffb7c5;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1em;
         }
-        h2 {
-            margin-top: 40px;
-            border-top: 1px solid #d4af37;
-            padding-top: 20px;
-            color: #d4af37;
-        }
+
+        .btn:hover { background: #ff8fa3; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- Tombol Konfirmasi Usia -->
-        <a href="https://deductpursue.com/isxt18cv5?key=9dc3d672ab267827f9065674f6a3407f" class="btn-link">
-            Konfirmasi: Apakah kamu berusia 18+?
-        </a>
+<div class="container">
+    <header>
+        <h1 id="current-day">Memuat Jadwal...</h1>
+        <p id="date-now"></p>
+    </header>
 
-        <div class="ad-slot">
-            <script src="https://deductpursue.com/34/83/cc/3483cc01879a0b87f5698fca3d8b6067.js"></script>
-        </div>
-
-        <!-- Tombol yang diubah sesuai permintaan -->
-        <a href="https://t.me/vidioviralll31" class="btn-link">
-            Kumpulan Vidio Enak-Enak
-        </a>
-
-        <div class="ad-slot">
-            <script>
-                atOptions = {
-                    'key' : '0d9622e9e779ea401d2f05433e1b0674',
-                    'format' : 'iframe',
-                    'height' : 250,
-                    'width' : 300,
-                    'params' : {}
-                };
-            </script>
-            <script src="https://deductpursue.com/0d9622e9e779ea401d2f05433e1b0674/invoke.js"></script>
-        </div>
-
-        <div class="ad-slot">
-            <script async="async" data-cfasync="false" src="https://deductpursue.com/fbffb4771c2d97dea17ecc5378bee6a5/invoke.js"></script>
-            <div id="container-fbffb4771c2d97dea17ecc5378bee6a5"></div>
-        </div>
-
-        <script src="https://deductpursue.com/b5/06/21/b5062164c8e2ce615f79e8b920276e0b.js"></script>
+    <!-- Section Jadwal -->
+    <div class="section" id="schedule-display">
+        <h2>Target Hari Ini</h2>
+        <div id="content-schedule"></div>
     </div>
+
+    <!-- Section Input Kata -->
+    <div class="section">
+        <h2>Input Kosakata Baru</h2>
+        <p style="font-size: 0.8em;">Ketik kata di kiri dan arti di kanan:</p>
+        <table id="vocab-table">
+            <thead>
+                <tr>
+                    <th>English</th>
+                    <th>Indonesia</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Baris input akan muncul di sini via JS -->
+            </tbody>
+        </table>
+        <br>
+        <button class="btn" onclick="saveVocab()">Simpan Kata Hari Ini</button>
+    </div>
+
+    <!-- Section Flashcard Game -->
+    <div class="section">
+        <h2>Flashcard Game</h2>
+        <div class="flashcard-area" onclick="flipCard()">
+            <div class="flashcard-inner" id="card-text">
+                Klik "Mulai" untuk belajar
+            </div>
+        </div>
+        <button class="btn" onclick="startFlashcards()">Mulai / Acak Game</button>
+        <p id="card-status" style="text-align:center; font-size: 0.8em;"></p>
+    </div>
+</div>
+
+<script>
+    const allSchedules = {
+        0: { // Minggu
+            title: "MINGGU - Review TOTAL",
+            tasks: [
+                {t: "PAGI", d: "Review SEMUA vocab minggu ini. Target: minimal ingat 50%."},
+                {t: "SIANG", d: "Istirahat ringan / Santai."},
+                {t: "MALAM", d: "English Fun: Nonton video/lagu English, baca caption."}
+            ]
+        },
+        1: { // Senin
+            title: "SENIN - Vocabulary & Grammar",
+            tasks: [
+                {t: "PAGI", d: "Belajar 10 kata (Tired, Excited, Study, dll). Buat 1 kalimat dari 5 kata."},
+                {t: "SIANG", d: "Tes Mandiri: 25 soal campuran (Penalaran, B. Indo, Math Dasar)."},
+                {t: "MALAM", d: "Grammar: Simple Present Tense. Speaking 5 menit: 'Introduce yourself'."}
+            ]
+        },
+        2: { // Selasa
+            title: "SELASA - Review & Listening",
+            tasks: [
+                {t: "PAGI", d: "Review vocab Senin tanpa lihat catatan. Tambah 10 kata baru."},
+                {t: "SIANG", d: "Tes Mandiri: Latihan reading & memahami soal dengan cepat."},
+                {t: "MALAM", d: "Listening: Tonton video English 20 menit + Shadowing."}
+            ]
+        },
+        3: { // Rabu
+            title: "RABU - Math & Grammar",
+            tasks: [
+                {t: "PAGI", d: "Review 20 kata sebelumnya. Tambahkan 10 kata baru."},
+                {t: "SIANG", d: "Tes Mandiri: Fokus Math Dasar (Persen, Pecahan, Perbandingan)."},
+                {t: "MALAM", d: "Grammar: am/is/are, do/does. Buat kalimat tanya & negatif."}
+            ]
+        },
+        4: { // Kamis
+            title: "KAMIS - Speaking Day",
+            tasks: [
+                {t: "PAGI", d: "Ngomong sendiri 10 menit tentang aktivitas/makanan favorit."},
+                {t: "SIANG", d: "Try Out Mini: 45 menit pakai timer."},
+                {t: "MALAM", d: "Listening: Catat kata yang sering muncul & cara ucapnya."}
+            ]
+        },
+        5: { // Jumat
+            title: "JUMAT - Review Besar",
+            tasks: [
+                {t: "PAGI", d: "Review SEMUA vocab minggu ini. Lupa itu normal!"},
+                {t: "SIANG", d: "Tes Mandiri: Fokus pada soal yang sering salah."},
+                {t: "MALAM", d: "Reading: Baca cerita pendek, cari Subject, Verb, dan arti."}
+            ]
+        },
+        6: { // Sabtu
+            title: "SABTU - Try Out",
+            tasks: [
+                {t: "PAGI", d: "Vocab Test: Terjemahkan Indo -> Eng dan sebaliknya."},
+                {t: "SIANG", d: "Try Out: 1 sesi penuh (Simulasi real)."},
+                {t: "MALAM", d: "Speaking Santai: 'What did I do today?'"}
+            ]
+        }
+    };
+
+    function updatePage() {
+        const now = new Date();
+        const dayNum = now.getDay(); // 0 (Minggu) - 6 (Sabtu)
+        const hours = now.getHours();
+        
+        // Logika Hapus: Jika hari Senin jam 00:00, kita bisa bersihkan storage jika perlu
+        if(dayNum === 1 && hours === 0) {
+            // localStorage.removeItem('myVocab'); // Opsional: Hapus vocab mingguan otomatis
+        }
+
+        const today = allSchedules[dayNum];
+        document.getElementById('current-day').innerText = today.title;
+        document.getElementById('date-now').innerText = now.toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+        let html = "";
+        today.tasks.forEach(item => {
+            html += `<div class="schedule-item"><div class="time-tag">${item.t}</div><div>${item.d}</div></div>`;
+        });
+        document.getElementById('content-schedule').innerHTML = html;
+    }
+
+    // Sistem Vocab
+    function initVocabTable() {
+        const tbody = document.querySelector('#vocab-table tbody');
+        tbody.innerHTML = "";
+        for(let i=0; i<5; i++) {
+            tbody.innerHTML += `<tr>
+                <td><input type="text" class="eng-in"></td>
+                <td><input type="text" class="ind-in"></td>
+            </tr>`;
+        }
+    }
+
+    function saveVocab() {
+        const engs = document.querySelectorAll('.eng-in');
+        const inds = document.querySelectorAll('.ind-in');
+        let currentData = JSON.parse(localStorage.getItem('myVocab') || "[]");
+
+        engs.forEach((el, index) => {
+            if(el.value) {
+                currentData.push({ q: el.value, a: inds[index].value });
+            }
+        });
+
+        localStorage.setItem('myVocab', JSON.stringify(currentData));
+        alert("Kosakata berhasil disimpan!");
+        initVocabTable();
+    }
+
+    // Flashcard Game
+    let gameData = [];
+    let currentCardIndex = 0;
+    let isFlipped = false;
+
+    function startFlashcards() {
+        gameData = JSON.parse(localStorage.getItem('myVocab') || "[]");
+        if(gameData.length === 0) {
+            alert("Isi daftar kata dulu di tabel atas ya!");
+            return;
+        }
+        gameData.sort(() => Math.random() - 0.5); // Acak
+        currentCardIndex = 0;
+        showCard();
+    }
+
+    function showCard() {
+        isFlipped = false;
+        const card = document.getElementById('card-text');
+        card.innerText = gameData[currentCardIndex].q;
+        document.getElementById('card-status').innerText = `Kata ke-${currentCardIndex + 1} dari ${gameData.length}`;
+    }
+
+    function flipCard() {
+        if(gameData.length === 0) return;
+        const card = document.getElementById('card-text');
+        if(!isFlipped) {
+            card.innerText = gameData[currentCardIndex].a;
+            card.style.color = "#ff8fa3";
+            isFlipped = true;
+        } else {
+            currentCardIndex++;
+            if(currentCardIndex >= gameData.length) {
+                alert("Hebat! Kamu sudah menyelesaikan semua kata.");
+                startFlashcards();
+            } else {
+                showCard();
+                card.style.color = "inherit";
+            }
+        }
+    }
+
+    // Jalankan saat load
+    updatePage();
+    initVocabTable();
+    // Cek setiap menit untuk ganti hari otomatis
+    setInterval(updatePage, 60000);
+</script>
 
 </body>
 </html>
